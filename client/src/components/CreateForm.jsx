@@ -30,7 +30,7 @@ const CreateForm = ({
             </div>
 
             <div className="form-group">
-            <label htmlFor="option1">Option1: </label>
+            <label htmlFor="option1">Option 1: </label>
             <input
                 type="text"
                 className="form-control"
@@ -43,7 +43,7 @@ const CreateForm = ({
             </div>
 
             <div className="form-group">
-            <label htmlFor="option2">Option2: </label>
+            <label htmlFor="option2">Option 2: </label>
             <input
                 type="text"
                 className="form-control"
@@ -57,9 +57,11 @@ const CreateForm = ({
 
         </div>
 
+        <div className="center">
         <Button type="submit" className="btn">
             Create Poll!
         </Button>
+        </div>
 
         </form>
 
