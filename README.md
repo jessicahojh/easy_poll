@@ -1,5 +1,5 @@
 # Easy Poll
-Easy Poll is a full stack MERN (MongoDB, Express, React/Redux, NodeJS) web application that allows users to submit a question with two 
+Easy Poll is a full stack MERN (MongoDB, Express, React/Redux, NodeJS) web application that allows users to submit a question with two options for other users to vote on.
 
 ## Table of Contents
 * [Tech Stack](#techstack)<br/>
