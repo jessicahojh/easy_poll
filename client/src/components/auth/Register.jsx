@@ -21,6 +21,8 @@ const Register = () => {
       password,
     }
 
+    console.log("NEW USER IS", newUser)
+
     dispatch(addUser(newUser))
 
     // Clear Fields
