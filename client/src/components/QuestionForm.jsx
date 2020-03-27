@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 
-const CreateForm = ({
-    question,
-    option1,
-    option2,
-    handleQuestion,
-    handleOption1,
-    handleOption2,
-    handleSubmit
-}) => {
+const QuestionForm = () => {
+
+    const [ question, setQuestion ] = useState('');
+    const [ option1, setOption1 ] = useState('');
+    const [ option2, setOption2 ] = useState('');
+
+    const dispatch = useDispatch();
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+  
+      dispatch(addQuestion(question))
+      dispatch(addOption1(option1))
+      dispatch(addOption2(option2))
+  
+      // Clear Fields
+      setQuestion('');
+      setOption1('');
+      setOption2('');
+    };
+
     return (
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
 
         <div className="form-center">
 
@@ -25,7 +37,7 @@ const CreateForm = ({
                 name="question"
                 placeholder="e.g. Which do you prefer?"
                 value={question}
-                onChange={handleQuestion}
+                onChange={e => setQuestion(e.target.value)}
             />
             </div>
 
@@ -38,7 +50,7 @@ const CreateForm = ({
                 name="option1"
                 placeholder="e.g. Pho"
                 value={option1}
-                onChange={handleOption1}
+                onChange={e => setOption1(e.target.value)}
             />
             </div>
 
@@ -51,7 +63,7 @@ const CreateForm = ({
                 name="option2"
                 placeholder="e.g. Ramen"
                 value={option2}
-                onChange={handleOption2}
+                onChange={e => setOption2(e.target.value)}
             />
             </div>
 
@@ -68,4 +80,4 @@ const CreateForm = ({
     )
 }
 
-export default CreateForm;
+export default QuestionForm;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Poll from './Poll';
-import CreateForm from './CreateForm';
+import QuestionForm from './QuestionForm';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -42,7 +42,7 @@ const Home = () => {
             <Row>
                 <Col></Col>
                 <Col xs={6}>
-                <CreateForm
+                <QuestionForm
                     handleQuestion={handleQuestion}
                     handleOption1={handleOption1}
                     handleOption2={handleOption2}
