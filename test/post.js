@@ -58,7 +58,7 @@ describe('Testing Gets', () => {
         .end((error, response) => {
           console.log("TEST:  Deleting test user")
           //response.should.have.status(200);
-          response.body.should.have.property('msg').eq('User exists and removed');
+          response.body.should.have.property('msg').eq('User exists and deleted');
           console.log(response.body);
           done();
         })
