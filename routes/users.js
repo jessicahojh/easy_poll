@@ -87,7 +87,7 @@ router.delete(
 
       if (user) {
         await User.findOneAndDelete(req.body);
-        return res.status(400).json({ msg: 'User exists and removed' });
+        return res.json({ msg: 'User exists and deleted' });
       }
 
     } catch (err) {
