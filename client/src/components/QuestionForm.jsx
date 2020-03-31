@@ -7,14 +7,9 @@ const QuestionForm = () => {
     const [ option1, setOption1 ] = useState('');
     const [ option2, setOption2 ] = useState('');
 
-    const dispatch = useDispatch();
-
     const onSubmit = async (e) => {
       e.preventDefault();
-  
-      dispatch(addQuestion(question))
-      dispatch(addOption1(option1))
-      dispatch(addOption2(option2))
+
   
       // Clear Fields
       setQuestion('');
