@@ -7,9 +7,11 @@ export const GET_DB_QUESTIONS_AND_OPTIONS = 'GET_DB_QUESTIONS_AND_OPTIONS';
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION';
+
+export const ADD_OPTION = 'ADD_OPTION';
+
 export const SELECT_OPTION = 'SELECT_OPTION';
-export const EDIT_OPTION = 'EDIT_OPTION';
-export const DELETE_OPTION = 'DELETE_OPTION';
+
 
 
 
