@@ -1,7 +1,8 @@
 import {
     REGISTER_USER,
     LOGIN_USER,
-    LOGOUT_USER
+    LOGOUT_USER,
+    DELETE_USER
   } from '../actions/types';
   
   const initialState = {
@@ -29,6 +30,12 @@ import {
           user: null,
           isLogged: false
         };
+
+      case DELETE_USER:
+        return {
+          user: null,
+          isLogged: false
+        }
   
       default:
         return state;

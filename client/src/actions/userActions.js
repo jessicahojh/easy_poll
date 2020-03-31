@@ -1,7 +1,8 @@
 import {
     REGISTER_USER,
     LOGIN_USER,
-    LOGOUT_USER
+    LOGOUT_USER,
+    DELETE_USER
   } from './types';
   
   // Register User to server
@@ -32,5 +33,20 @@ import {
   export const logoutUser = () => dispatch => {
     dispatch({
       type: LOGOUT_USER
+    });
+  };
+
+  // Delete the user
+  export const deleteUser = user => async dispatch => {
+    await fetch('/users/delete', {
+      method: 'DELETE',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    dispatch({
+      type: DELETE_USER
     });
   };

@@ -73,4 +73,29 @@ router.post(
   }
 );
 
+
+// @route     DELETE api/users
+// @desc      Delete a user
+// @access    Public
+
+router.delete(
+  '/delete',
+  async (req, res) => {
+
+    try {
+      let user = await User.findOne(req.body);
+
+      if (user) {
+        await User.findOneAndDelete(req.body);
+        return res.status(400).json({ msg: 'User exists and removed' });
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+
 module.exports = router;
