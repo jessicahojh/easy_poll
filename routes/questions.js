@@ -18,7 +18,7 @@ router.post('/add', async (req, res) => {
 
     try {
 
-    const user =  req.body.userId;
+    const user = req.body.userId;
     const question = req.body.question;
     const optionA = req.body.optionA;
     const optionB = req.body.optionB;

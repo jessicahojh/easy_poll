@@ -3,7 +3,7 @@ import {
     ADD_QUESTION
 } from './types';
 
-    // Get user's bookmarks from database.
+    // Get user's questions from database.
     export const getDbQuestions = question => async dispatch => {
     const res = await fetch(`/questions`);
     const data = await res.json();

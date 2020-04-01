@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    questions: null
+    question: null
 }
 
 export default (state = initialState, action) => {
