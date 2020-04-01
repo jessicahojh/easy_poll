@@ -1,20 +1,34 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
+import { addQuestion } from '../actions/questionActions';
 
 const QuestionForm = () => {
 
+    const user = useSelector((state) => state.users.user);
+
     const [ question, setQuestion ] = useState('');
-    const [ option1, setOption1 ] = useState('');
-    const [ option2, setOption2 ] = useState('');
+    const [ optionA, setOptionA ] = useState('');
+    const [ optionB, setOptionB ] = useState('');
+
+    const dispatch = useDispatch();
 
     const onSubmit = async (e) => {
       e.preventDefault();
 
+      const newQuestion = {
+        user,
+        question,
+        optionA,
+        optionB,
+      }
+
+      dispatch(addQuestion(newQuestion))
   
       // Clear Fields
       setQuestion('');
-      setOption1('');
-      setOption2('');
+      setOptionA('');
+      setOptionB('');
     };
 
     return (
@@ -44,8 +58,8 @@ const QuestionForm = () => {
                 id="option1"
                 name="option1"
                 placeholder="e.g. Pho"
-                value={option1}
-                onChange={e => setOption1(e.target.value)}
+                value={optionA}
+                onChange={e => setOptionA(e.target.value)}
             />
             </div>
 
@@ -57,8 +71,8 @@ const QuestionForm = () => {
                 id="option2"
                 name="option2"
                 placeholder="e.g. Ramen"
-                value={option2}
-                onChange={e => setOption2(e.target.value)}
+                value={optionB}
+                onChange={e => setOptionB(e.target.value)}
             />
             </div>
 
