@@ -1,31 +1,49 @@
 const express = require('express');
 const router = express.Router();
 
-// @route   GET api/questions
+const Questions = require('../models/Questions');
+
+// @route   GET /questions
 // @desc    Get all questions
 // @access  Public
+
 router.get('/', (req, res) => {
     res.send("Get all questions");
 });
 
-// @route   POST api/questions
+// @route   POST /questions
 // @desc    Add new question
 // @access  Public
-router.post('/', (req, res) => {
-    res.send("Add question");
+router.post('/add', async (req, res) => {
+
+    try {
+
+    const user =  req.body.userId;
+    const question = req.body.question;
+    const optionA = req.body.optionA;
+    const optionB = req.body.optionB;
+
+    const newQuestion = new Questions({
+        user,
+        question,
+        optionA,
+        optionB
+      });
+
+    await newQuestion.save()
+    .then(res.json('Question added!'))
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 });
 
-// @route   PUT api/questions
-// @desc    Update question
-// @access  Public
-router.put('/:id', (req, res) => {
-    res.send("Update question");
-});
-
-// @route   DELETE api/questions
+// @route   DELETE /questions
 // @desc    Delete question
 // @access  Public
-router.delete('/:id', (req, res) => {
+
+router.delete('/delete', (req, res) => {
     res.send("Delete question");
 });
 
