@@ -5,4 +5,4 @@ const OptionSchema = mongoose.Schema({
     votes: {type: Array, required: true}
 });
 
-module.exports = mongoose.model('user', OptionSchema);
+module.exports = mongoose.model('option', OptionSchema);
