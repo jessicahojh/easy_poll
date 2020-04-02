@@ -4,4 +4,4 @@ const VoteSchema = mongoose.Schema({
     userId: {type: String, required: true},
 });
 
-module.exports = mongoose.model('user', VoteSchema);
+module.exports = mongoose.model('vote', VoteSchema);
