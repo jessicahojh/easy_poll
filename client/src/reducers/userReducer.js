@@ -7,6 +7,7 @@ import {
   
   const initialState = {
     user: null,
+    user_id: null,
     isLogged: false
   };
   
@@ -16,6 +17,7 @@ import {
       case REGISTER_USER:
         return {
           user: action.payload,
+          user_id: action.id_data,
           isLogged: true
         };
   

@@ -7,6 +7,7 @@ import { addOption } from '../actions/optionActions';
 const QuestionForm = () => {
 
     const user = useSelector((state) => state.users.user);
+    const userId = useSelector((state) => state.users.user_id);
 
     const [ question, setQuestion ] = useState('');
     const [ optionA, setOptionA ] = useState('');
@@ -18,11 +19,13 @@ const QuestionForm = () => {
       e.preventDefault();
 
       const newQuestion = {
-        user,
+        userId,
         question,
         optionA,
         optionB,
       }
+
+      console.log("new question object", newQuestion) // this works
 
       const newOption1 = {
           option: optionA

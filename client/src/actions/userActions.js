@@ -14,10 +14,18 @@ import {
         'Content-Type': 'application/json'
       }
     });
+
+    // new code to grab the user ID after user object is created
+    const res = await fetch('/users/getid');
+
+    const data = await res.json();
+
+    // end 
   
     dispatch({
       type: REGISTER_USER,
-      payload: user.username
+      payload: user.username,
+      id_data: data // added this to send id payload data 
     });
   };
   
