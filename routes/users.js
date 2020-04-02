@@ -73,6 +73,28 @@ router.post(
   }
 );
 
+// @route     GET api/users
+// @desc      Get a user's ID
+// @access    Public
+
+router.get(
+  '/getid',
+  async (req, res) => {
+
+    try {
+      let user = await User.findOne(req.body);
+
+      if (user) {
+        return res.json(user._id);
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 
 // @route     DELETE api/users
 // @desc      Delete a user
