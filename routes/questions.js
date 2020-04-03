@@ -20,14 +20,16 @@ router.post('/add', async (req, res) => {
 
     const userId = req.body.userId;
     const question = req.body.question;
-    const optionA = req.body.optionA;
-    const optionB = req.body.optionB;
+    const options = []
+    // const optionA = req.body.optionA;
+    // const optionB = req.body.optionB;
 
     const newQuestion = new Questions({
         userId,
         question,
-        optionA,
-        optionB
+        options
+        // optionA,
+        // optionB
       });
 
     await newQuestion.save()
