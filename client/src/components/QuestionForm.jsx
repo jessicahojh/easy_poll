@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import { addQuestion } from '../actions/questionActions';
-import { addOption } from '../actions/optionActions';
+import { addQuestionAndOptions } from '../actions/questionActions';
 
 const QuestionForm = () => {
 
@@ -35,9 +34,7 @@ const QuestionForm = () => {
           option: optionB
       }
 
-      dispatch(addQuestion(newQuestion))
-      dispatch(addOption(newOption1))
-      dispatch(addOption(newOption2))
+      dispatch(addQuestionAndOptions(newQuestion, newOption1, newOption2))
   
       // Clear Fields
       setQuestion('');

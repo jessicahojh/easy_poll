@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+// import { useSelector } from 'react-redux';
+
 const Options = require('../models/Options');
+const Questions = require('../models/Questions');
+
+
 
 // @route   GET /optionss
 // @desc    Get all options
@@ -27,7 +32,7 @@ router.post('/add', async (req, res) => {
       });
 
     await newOption.save()
-    .then(res.json('Option added!'))
+    .then(res.json(newOption._id))
 
     } catch (err) {
         console.error(err.message);

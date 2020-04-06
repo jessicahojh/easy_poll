@@ -14,16 +14,34 @@ import {
     });
   };
 
-  // Add Question to server
-  export const addQuestion = question => async dispatch => {
-    await fetch('/questions/add', {
+  export const addQuestionAndOptions = (question, optionA, optionB) => async dispatch => {
+
+    const optionARes = await fetch('/options/add', {
       method: 'POST',
-      body: JSON.stringify(question),
+      body: JSON.stringify(optionA),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }); 
+    const optAData = await optionARes.json();
+
+    const optionBRes = await fetch('/options/add', {
+      method: 'POST',
+      body: JSON.stringify(optionB),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }); 
+    const optBData = await optionBRes.json();
+
+    const questionRes = await fetch('/questions/add', {
+      method: 'POST',
+      body: JSON.stringify([question, optAData, optBData]),
       headers: {
         'Content-Type': 'application/json'
       }
     });
-  
+
     dispatch({
       type: ADD_QUESTION,
       payload: question
