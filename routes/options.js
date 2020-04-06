@@ -1,19 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-// import { useSelector } from 'react-redux';
-
 const Options = require('../models/Options');
-const Questions = require('../models/Questions');
-
-
 
 // @route   GET /optionss
 // @desc    Get all options
 // @access  Public
 
 router.get('/', (req, res) => {
-    res.send("Get all options");
+    Options.find({})
+    .then(options => res.json(options))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // @route   POST /options
