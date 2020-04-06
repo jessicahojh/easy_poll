@@ -1,6 +1,6 @@
 import {
     GET_DB_QUESTIONS,
-    ADD_QUESTION
+    ADD_QUESTIONS_AND_OPTIONS
 } from '../actions/types';
 
 const initialState = {
@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
             question: action.payload,
         };
   
-    case ADD_QUESTION:
+    case ADD_QUESTIONS_AND_OPTIONS:
         return {
             question: action.payload,
         };

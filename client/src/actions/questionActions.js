@@ -1,6 +1,6 @@
 import {
     GET_DB_QUESTIONS,
-    ADD_QUESTION
+    ADD_QUESTIONS_AND_OPTIONS
 } from './types';
 
     // Get user's questions from database.
@@ -43,7 +43,7 @@ import {
     });
 
     dispatch({
-      type: ADD_QUESTION,
+      type: ADD_QUESTIONS_AND_OPTIONS,
       payload: question
     });
   };
