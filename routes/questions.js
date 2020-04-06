@@ -8,7 +8,9 @@ const Questions = require('../models/Questions');
 // @access  Public
 
 router.get('/', (req, res) => {
-    res.send("Get all questions");
+    Questions.find({})
+    .then(questions => res.json(questions))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // @route   POST /questions

@@ -3,7 +3,7 @@ import {
     ADD_QUESTIONS_AND_OPTIONS
 } from './types';
 
-    // Get user's questions from database.
+    // Get all questions from database.
     export const getDbQuestions = question => async dispatch => {
     const res = await fetch(`/questions`);
     const data = await res.json();
