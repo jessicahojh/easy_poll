@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
 
 import Poll from './Poll';
 import QuestionForm from './QuestionForm';
@@ -20,7 +19,7 @@ const Home = () => {
                 setAllQuestionsData(data)
             });
         }
-    }, []);
+    }, [allQuestionsData]);
 
     if (allQuestionsData === null) {
         return (
