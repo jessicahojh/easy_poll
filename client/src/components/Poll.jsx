@@ -1,7 +1,9 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2';
 
-const state = {
+const Poll = ({ question }) => {
+
+  const state = {
     labels: ['Pho', 'Ramen'],
     datasets: [
       {
@@ -20,8 +22,6 @@ const state = {
       }
     ]
   }
-
-const Poll = () => {
 
     return (
         <div>

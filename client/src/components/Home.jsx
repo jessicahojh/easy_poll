@@ -24,24 +24,37 @@ const Home = () => {
 
     console.log("GOT ALL QUESTIONS", allQuestionsData)
 
-    return (
-        <div>
+    if (allQuestionsData === null) {
+        return (
+            <div>
+                <h2> Loading...</h2>
+            </div>
+        )
 
-        <Container>
-            <Row>
-                <Col></Col>
-                <Col xs={6}>
-                <QuestionForm/>
-                </Col>
-                <Col></Col>
-            </Row>
+    } else {
 
-                <Poll/>
+        return (
+            <div>
 
-        </Container>
-            
-        </div>
-    )
+            <Container>
+                <Row>
+                    <Col></Col>
+                    <Col xs={6}>
+                    <QuestionForm/>
+                    </Col>
+                    <Col></Col>
+                </Row>
+
+                {allQuestionsData.map(question => 
+                    <Poll question={question}
+                    />)
+                }
+
+            </Container>
+                
+            </div>
+        )
+    }
 }
 
 export default Home;
