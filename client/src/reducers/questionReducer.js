@@ -4,7 +4,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    question: null
+    allQuestions: null,
+    currentNewQuestion: null
 }
 
 export default (state = initialState, action) => {
@@ -12,12 +13,12 @@ export default (state = initialState, action) => {
 
     case GET_DB_QUESTIONS:
         return {
-            question: action.payload,
+            allQuestions: action.payload,
         };
   
     case ADD_QUESTIONS_AND_OPTIONS:
         return {
-            question: action.payload,
+            currentNewQuestion: action.payload,
         };
 
     default:

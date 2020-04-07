@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 import Poll from './Poll';
 import QuestionForm from './QuestionForm';
@@ -8,6 +9,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Home = () => {
+
+    const [allQuestionsData, setAllQuestionsData] = useState(null);
+
+    useEffect(() => {
+        if (allQuestionsData === null){
+        fetch(`/questions`)
+            .then(response => response.json())
+            .then(data => {
+                setAllQuestionsData(data)
+            });
+        }
+    }, []);
+
+    console.log("GOT ALL QUESTIONS", allQuestionsData)
 
     return (
         <div>
