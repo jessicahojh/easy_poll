@@ -22,8 +22,6 @@ const Home = () => {
         }
     }, []);
 
-    console.log("ALL QUESTIONS DATA", allQuestionsData)
-
     if (allQuestionsData === null) {
         return (
             <div>

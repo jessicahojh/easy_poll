@@ -30,7 +30,6 @@ router.post('/add', async (req, res) => {
 
     await newOption.save()
     .then(res.json(newOption))
-    // .then(res.json(newOption._id))
 
     console.log("LOOK HERE", newOption)
 
