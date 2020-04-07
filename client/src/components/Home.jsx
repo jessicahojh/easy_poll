@@ -22,7 +22,7 @@ const Home = () => {
         }
     }, []);
 
-    console.log("GOT ALL QUESTIONS", allQuestionsData)
+    console.log("ALL QUESTIONS DATA", allQuestionsData)
 
     if (allQuestionsData === null) {
         return (
@@ -46,7 +46,8 @@ const Home = () => {
                 </Row>
 
                 {allQuestionsData.map(question => 
-                    <Poll question={question}
+                    <Poll 
+                    question={question}
                     />)
                 }
 

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Doughnut } from 'react-chartjs-2';
 
-const Poll = ({ question }) => {
+const Poll = ({ question, allOptionsData }) => {
+
+  // console.log("Question in Poll", question)
+
+  const option1 = question.options[0].option
+  const option2 = question.options[1].option
+  const questionTitle = question.question
+
+  // console.log(option1, option2)
 
   const state = {
-    labels: ['Pho', 'Ramen'],
+    labels: [option1, option2],
     datasets: [
       {
         label: 'Rainfall',
@@ -31,7 +39,7 @@ const Poll = ({ question }) => {
                 options={{
                     title:{
                     display:true,
-                    text:'Which do you prefer?',
+                    text: questionTitle,
                     fontSize:50
                     },
                     legend:{
