@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Navbar = () => {
 
-  const isLogged = useSelector((state) => state.users.isLogged);
+  const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
   return (
     <div className='navbar'>
@@ -21,13 +21,13 @@ const Navbar = () => {
         </li>
         <li>
           {
-            isLogged ? <Link className='navLink' to='/logout'>Logout</Link>
+            isAuthenticated ? <Link className='navLink' to='/logout'>Logout</Link>
             : <Link className='navLink' to='/login'>Login</Link>
           }
         </li>
         <li>
           {
-            isLogged ? ''
+            isAuthenticated ? ''
             : <Link className='navLink' to='/register'>Register</Link>
           }
         </li>

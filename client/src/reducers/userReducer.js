@@ -10,7 +10,7 @@ import {
   const initialState = {
     user: null,
     user_id: null,
-    isLogged: false
+    isAuthenticated: null
   };
   
   export default (state = initialState, action) => {
@@ -20,13 +20,13 @@ import {
         return {
           user: action.payload,
           user_id: action.id_data,
-          isLogged: true
+          isAuthenticated: true
         };
   
       case LOGIN_USER:
         return {
           user: action.payload,
-          isLogged: true
+          isAuthenticated: true
         };
 
       case LOGIN_SUCCESS:
@@ -40,13 +40,13 @@ import {
       case LOGOUT_USER:
         return {
           user: null,
-          isLogged: false
+          isAuthenticated: false
         };
 
       case DELETE_USER:
         return {
           user: null,
-          isLogged: false
+          isAuthenticated: false
         }
   
       default:

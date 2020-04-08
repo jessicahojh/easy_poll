@@ -4,7 +4,8 @@ import { loginUser } from '../../actions/userActions';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-  const isLogged = useSelector((state) => state.users.isLogged);
+  const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
+  console.log("isAuth", isAuthenticated)
 
   let history = useHistory();
 
@@ -23,7 +24,7 @@ const Login = () => {
   return (
     <div>
       {
-        isLogged ? <div> You are logged in </div> :
+        isAuthenticated ? <div> You are logged in </div> :
         <div className='form-container'>
           <h1>
             Account <span className='text-primary'>Login</span>
