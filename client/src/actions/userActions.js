@@ -1,8 +1,11 @@
 import axios from 'axios';
+import setAuthToken from '../utils/setAuthToken';
 
 import {
     REGISTER_USER,
     LOGIN_USER,
+    USER_LOADED,
+    AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_USER,
@@ -32,6 +35,27 @@ import {
       id_data: data // added this to send id payload data 
     });
   };
+
+  // Load User
+  export const loadUser = () => async dispatch => {
+    setAuthToken(localStorage.token);
+
+    console.log("loadUser function got called")
+
+    try {
+      const res = await axios.get('/auth/login');
+
+      console.log("res data from loadUser func", res.data)
+
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data
+      });
+    } 
+    catch (err) {
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
   
   // Login the user if passed check
   export const loginUser = formData => async dispatch => {
@@ -52,18 +76,13 @@ import {
         payload: res.data
       });
 
-      // loadUser();
+      loadUser();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
         payload: err.response.data.msg
       });
     }
-
-    // dispatch({
-    //   type: LOGIN_USER,
-    //   payload: username
-    // });
   };
   
   // Logout the user
