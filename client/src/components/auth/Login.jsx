@@ -16,23 +16,8 @@ const Login = () => {
     const formUsername = document.getElementById('username').value;
     const formPassword = document.getElementById('password').value;
 
-    const formData = {"username": formUsername, "password": formPassword}
-
-    fetch('/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then((res) => res.json())
-    .then((json) => console.log(json))
-    // .then((json) => {
-    //   if (json === 'User Found'){
-    //     dispatch(loginUser(formUsername));
-    //     history.push('/');
-    //   } else {
-    //     alert("Username or password is incorrect.");
-    //   }
-    // })
+    dispatch(loginUser({formUsername, formPassword}));
+    history.push('/')
   }
 
   return (

@@ -8,10 +8,10 @@ const { check, validationResult } = require('express-validator/check');
 
 const User = require('../models/User');
 
-// @route     GET api/auth
+// @route     GET /auth
 // @desc      Get logged in user
 // @access    Private
-router.get('/', auth, async (req, res) => {
+router.get('/login', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
@@ -21,25 +21,17 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// @route     POST api/auth
+// @route     POST /auth
 // @desc      Auth user & get token
 // @access    Public
-router.post(
-  '/',
-  [
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists()
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
+router.post('/login', async (req, res) => {
 
-    const { email, password } = req.body;
-
+    const username = req.body.formUsername
+    const password = req.body.formPassword
+    console.log("I CAN SEE IT", req.body, username, password)
     try {
-      let user = await User.findOne({ email });
+      let user = await User.findOne({ username });
+      console.log("found user", user)
 
       if (!user) {
         return res.status(400).json({ msg: 'Invalid Credentials' });

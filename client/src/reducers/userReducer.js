@@ -1,6 +1,8 @@
 import {
     REGISTER_USER,
     LOGIN_USER,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
     LOGOUT_USER,
     DELETE_USER
   } from '../actions/types';
@@ -26,6 +28,14 @@ import {
           user: action.payload,
           isLogged: true
         };
+
+      case LOGIN_SUCCESS:
+        localStorage.setItem('token', action.payload.token);
+        return {
+          isAuthenticated: true
+        };
+
+      case LOGIN_FAIL:
   
       case LOGOUT_USER:
         return {

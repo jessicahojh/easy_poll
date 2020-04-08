@@ -1,6 +1,10 @@
+import axios from 'axios';
+
 import {
     REGISTER_USER,
     LOGIN_USER,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
     LOGOUT_USER,
     DELETE_USER
   } from './types';
@@ -30,11 +34,36 @@ import {
   };
   
   // Login the user if passed check
-  export const loginUser = (username) => dispatch => {
-    dispatch({
-      type: LOGIN_USER,
-      payload: username
-    });
+  export const loginUser = formData => async dispatch => {
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post('/auth/login', formData, config);
+
+      console.log("got res data", res.data) // token
+
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      });
+
+      // loadUser();
+    } catch (err) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err.response.data.msg
+      });
+    }
+
+    // dispatch({
+    //   type: LOGIN_USER,
+    //   payload: username
+    // });
   };
   
   // Logout the user
