@@ -5,6 +5,6 @@ import userReducer from './userReducer';
 
 export default combineReducers({
   questions: questionReducer,
-  optionss: optionReducer,
+  options: optionReducer,
   users: userReducer
 });
