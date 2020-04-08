@@ -18,20 +18,21 @@ const Login = () => {
 
     const formData = {"username": formUsername, "password": formPassword}
 
-    fetch('/users/login', {
+    fetch('/auth/login', {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {'Content-Type': 'application/json'}
     })
     .then((res) => res.json())
-    .then((json) => {
-      if (json === 'User Found'){
-        dispatch(loginUser(formUsername));
-        history.push('/');
-      } else {
-        alert("Username or password is incorrect.");
-      }
-    })
+    .then((json) => console.log(json))
+    // .then((json) => {
+    //   if (json === 'User Found'){
+    //     dispatch(loginUser(formUsername));
+    //     history.push('/');
+    //   } else {
+    //     alert("Username or password is incorrect.");
+    //   }
+    // })
   }
 
   return (
