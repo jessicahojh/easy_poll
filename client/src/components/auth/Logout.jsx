@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../actions/userActions';
 
 const Logout = () => {
-  const isLogged = useSelector((state) => state.users.isLogged);
+  const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const Logout = () => {
   return (
     <div>
       {
-        isLogged ?
+        isAuthenticated ?
         <div className='form-container'>
           <h1>Are you sure you want to log out?</h1>
           <form onSubmit={onSubmit}>

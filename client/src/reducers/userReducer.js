@@ -45,9 +45,11 @@ import {
       case LOGIN_FAIL:
   
       case LOGOUT_USER:
+        localStorage.removeItem('token');
         return {
-          user: null,
-          isAuthenticated: false
+          token: null,
+          isAuthenticated: false,
+          user: null
         };
 
       case DELETE_USER:
