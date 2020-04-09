@@ -1,6 +1,8 @@
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 
+import store from '../store';
+
 import {
     REGISTER_USER,
     LOGIN_USER,
@@ -36,8 +38,9 @@ import {
     });
   };
 
+
   // Load User
-  export const loadUser = () => async dispatch => {
+  const loadUser = async dispatch => {
     setAuthToken(localStorage.token);
 
     console.log("loadUser function got called")
@@ -47,13 +50,17 @@ import {
 
       console.log("res data from loadUser func", res.data)
 
+      console.log("in load user test", dispatch)
+
       dispatch({
         type: USER_LOADED,
         payload: res.data
       });
     } 
     catch (err) {
-      dispatch({ type: AUTH_ERROR });
+      console.log("couldn't dispatch USER_LOADED")
+      console.log("err is", err)
+      // dispatch({ type: AUTH_ERROR });
     }
   };
   
@@ -71,12 +78,14 @@ import {
 
       console.log("got res data", res.data) // token
 
+      console.log(dispatch)
+
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
       });
 
-      loadUser();
+      store.dispatch(loadUser());
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,

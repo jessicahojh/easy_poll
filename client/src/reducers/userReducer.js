@@ -12,7 +12,7 @@ import {
   const initialState = {
     user: null,
     user_id: null,
-    isAuthenticated: null
+    isAuthenticated: false
   };
   
   export default (state = initialState, action) => {
@@ -33,12 +33,16 @@ import {
 
       case USER_LOADED:
         return {
-        isAuthenticated: true
+          ...state,
+          user: action.payload,
+          isAuthenticated: true
         };
 
       case LOGIN_SUCCESS:
         localStorage.setItem('token', action.payload.token);
         return {
+          ...state,
+          ...action.payload,
           isAuthenticated: true
         };
 

@@ -5,8 +5,10 @@ import { addQuestionAndOptions } from '../actions/questionActions';
 
 const QuestionForm = () => {
 
-    const user = useSelector((state) => state.users.user);
+    const user = useSelector((state) => state.users);
     const userId = useSelector((state) => state.users.user_id);
+
+    console.log("question form user info", user)
 
     const [ question, setQuestion ] = useState('');
     const [ optionA, setOptionA ] = useState('');
