@@ -8,7 +8,7 @@ const QuestionForm = () => {
     const user = useSelector((state) => state.users);
     const userId = useSelector((state) => state.users.user_id);
 
-    console.log("question form user info", user)
+    console.log("User object from the questionForm", user)
 
     const [ question, setQuestion ] = useState('');
     const [ optionA, setOptionA ] = useState('');
@@ -26,7 +26,7 @@ const QuestionForm = () => {
         optionB,
       }
 
-      console.log("new question object", newQuestion) // this works
+      console.log("new question object", newQuestion) 
 
       const newOption1 = {
           option: optionA

@@ -28,10 +28,9 @@ router.post('/login', async (req, res) => {
 
     const username = req.body.formUsername
     const password = req.body.formPassword
-    console.log("I CAN SEE IT", req.body, username, password)
+   
     try {
       let user = await User.findOne({ username });
-      console.log("found user", user)
 
       if (!user) {
         return res.status(400).json({ msg: 'Invalid Credentials' });

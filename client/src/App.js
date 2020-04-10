@@ -12,7 +12,6 @@ import Register from './components/auth/Register';
 
 import Container from 'react-bootstrap/Container';
 
-// import { loadUser } from './actions/userActions';
 import { autoLogin } from './actions/userActions';
 
 import './App.css';
@@ -21,9 +20,9 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(autoLogin());
-  // }, []);
+  useEffect(() => {
+    dispatch(autoLogin());
+  }, []);
 
   return (
    

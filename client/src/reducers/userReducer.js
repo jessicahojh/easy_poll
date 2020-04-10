@@ -21,8 +21,6 @@ import {
   
       case REGISTER_USER:
         return {
-          user: action.payload,
-          user_id: action.id_data,
           isAuthenticated: true
         };
   
