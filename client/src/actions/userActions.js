@@ -5,6 +5,7 @@ import store from '../store';
 
 import {
     REGISTER_USER,
+    SET_USER,
     LOGIN_USER,
     USER_LOADED,
     AUTH_ERROR,
@@ -13,6 +14,8 @@ import {
     LOGOUT_USER,
     DELETE_USER
   } from './types';
+
+  const setUser = (payload) => ({ type: "SET_USER", payload})
   
   // Register User to server
   export const addUser = user => async dispatch => {
@@ -39,30 +42,57 @@ import {
   };
 
 
-  // Load User
-  const loadUser = async dispatch => {
-    setAuthToken(localStorage.token);
+  // Not working code b/c unable to get dispatch to work here
 
-    console.log("loadUser function got called")
+  // Load User
+  // export const loadUser = async dispatch => {
+  //   setAuthToken(localStorage.token);
+
+  //   console.log("loadUser function got called")
+
+  //   try {
+  //     const res = await axios.get('/auth/login');
+
+  //     console.log("res data from loadUser func", res.data)
+
+  //     console.log("in load user test", dispatch)
+
+  //     dispatch({
+  //       type: USER_LOADED,
+  //       payload: res.data
+  //     });
+  //   } 
+  //   catch (err) {
+  //     console.log("couldn't dispatch USER_LOADED")
+  //     console.log("err is", err)
+  //     // dispatch({ type: AUTH_ERROR });
+  //   }
+  // };
+
+  // This takes over the previous loadUser()
+  export const autoLogin = () => async dispatch => {
+
+    setAuthToken(localStorage.token);
+    console.log("TOKEN FROM LS 1", localStorage.token)
+    console.log("autologin got called")
+    console.log("TOKEN FROM LS 2", localStorage.getItem("token"))
 
     try {
       const res = await axios.get('/auth/login');
 
-      console.log("res data from loadUser func", res.data)
-
-      console.log("in load user test", dispatch)
+      console.log("AUTOLOGIN RESP", res)
 
       dispatch({
         type: USER_LOADED,
         payload: res.data
       });
-    } 
-    catch (err) {
-      console.log("couldn't dispatch USER_LOADED")
-      console.log("err is", err)
+    } catch (err) {
+      console.log("WE GOT AN ERR", err)
       // dispatch({ type: AUTH_ERROR });
     }
-  };
+
+  }
+
   
   // Login the user if passed check
   export const loginUser = formData => async dispatch => {
@@ -85,7 +115,10 @@ import {
         payload: res.data
       });
 
-      store.dispatch(loadUser());
+      console.log("about to call autologin")
+
+      dispatch(autoLogin());
+      // loadUser();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,

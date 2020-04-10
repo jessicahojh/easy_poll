@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
+
 
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -12,11 +12,21 @@ import Register from './components/auth/Register';
 
 import Container from 'react-bootstrap/Container';
 
+// import { loadUser } from './actions/userActions';
+import { autoLogin } from './actions/userActions';
+
 import './App.css';
 
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(autoLogin());
+  // }, []);
+
   return (
-    <Provider store={store}>
+   
       <Router>
         <Fragment>
           <Navbar/>
@@ -31,7 +41,7 @@ const App = () => {
           </Container>
         </Fragment>
       </Router>
-    </Provider>
+
   );
 }
 

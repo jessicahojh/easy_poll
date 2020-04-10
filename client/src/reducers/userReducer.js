@@ -1,6 +1,7 @@
 import {
     REGISTER_USER,
     LOGIN_USER,
+    SET_USER,
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
@@ -29,6 +30,12 @@ import {
         return {
           user: action.payload,
           isAuthenticated: true
+        };
+
+      case SET_USER:
+        return {
+          isAuthenticated: true,
+          user: {...action.payload}
         };
 
       case USER_LOADED:

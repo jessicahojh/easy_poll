@@ -1,5 +1,6 @@
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
+export const SET_USER = 'SET_USER';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
