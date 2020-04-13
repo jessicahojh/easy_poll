@@ -1,9 +1,6 @@
 import {
     REGISTER_USER,
-    LOGIN_USER,
-    SET_USER,
     USER_LOADED,
-    AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_USER,
@@ -12,7 +9,6 @@ import {
   
   const initialState = {
     user: null,
-    user_id: null,
     isAuthenticated: false
   };
   
@@ -22,18 +18,6 @@ import {
       case REGISTER_USER:
         return {
           isAuthenticated: true
-        };
-  
-      case LOGIN_USER:
-        return {
-          user: action.payload,
-          isAuthenticated: true
-        };
-
-      case SET_USER:
-        return {
-          isAuthenticated: true,
-          user: {...action.payload}
         };
 
       case USER_LOADED:

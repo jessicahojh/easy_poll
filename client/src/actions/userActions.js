@@ -4,7 +4,6 @@ import setAuthToken from '../utils/setAuthToken';
 import {
   REGISTER_USER,
   USER_LOADED,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_USER,
@@ -39,7 +38,8 @@ export const autoLogin = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({ type: AUTH_ERROR });
+    console.log(err)
+    // dispatch({ type: AUTH_ERROR });
   }
 };
 
