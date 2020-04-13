@@ -6,7 +6,6 @@ import { addQuestionAndOptions } from '../actions/questionActions';
 const QuestionForm = () => {
 
     const user = useSelector((state) => state.users);
-    const userId = useSelector((state) => state.users.user_id);
 
     console.log("User object from the questionForm", user)
 
@@ -18,6 +17,9 @@ const QuestionForm = () => {
 
     const onSubmit = async (e) => {
       e.preventDefault();
+
+      const userId = user.user._id;
+      console.log("User ID in questionForm", userId)
 
       const newQuestion = {
         userId,
