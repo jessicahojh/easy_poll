@@ -34,7 +34,7 @@ import {
     }); 
     const optBData = await optionBRes.json();
 
-    const questionRes = await fetch('/questions/add', {
+    await fetch('/questions/add', {
       method: 'POST',
       body: JSON.stringify([question, optAData, optBData]),
       headers: {
