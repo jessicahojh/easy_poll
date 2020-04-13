@@ -16,9 +16,6 @@ import {
     switch(action.type) {
   
       case REGISTER_USER:
-        return {
-          isAuthenticated: true
-        };
 
       case USER_LOADED:
         return {
