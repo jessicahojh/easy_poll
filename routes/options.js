@@ -44,19 +44,19 @@ router.post('/add', async (req, res) => {
 // @desc    Get option to add vote 
 // @access  Public
 
-router.put('/addVote', async (req, res) => {
-    const optionId = req.body[0];
+router.post('/addVote', async (req, res) => {
+    const optionId = req.body[0].optionId;
     const voteRes = req.body[1];
 
     console.log("CHECKING", optionId, voteRes)
 
-    // const voteAdd = await Options.findOneAndUpdate(
-    //     { _id: optionId },
-    //     { $push: {votes: voteRes}}
-    // );
+    const voteAdd = await Options.findOneAndUpdate(
+        { _id: optionId },
+        { $push: {votes: voteRes}}
+    );
 
-    // await voteAdd.save
-    // .then(res.json('Vote added to an option!'))
+    await voteAdd.save
+    .then(res.json('Vote added to an option!'))
 });
 
 module.exports = router;

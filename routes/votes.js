@@ -27,7 +27,7 @@ router.post('/add', async (req, res) => {
       });
 
     await newVote.save()
-    .then(res.json('Vote added!'))
+    .then(res.json(newVote))
 
     } catch (err) {
         console.error(err.message);
