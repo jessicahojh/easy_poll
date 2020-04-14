@@ -18,25 +18,25 @@ const Poll = ({ question }) => {
   const user = useSelector((state) => state.users);
 
   // Need to know which option it is 
-  const onClick1 = async (e) => {
+  function onClick1(e) {
     e.preventDefault();
 
     const userId = user.user._id;
 
-    // console.log("1 was clicked")
+    console.log("1 was clicked")
 
-    // dispatch(addVote(userId, option1Id))
+    dispatch(addVote(userId, option1Id))
 
   }
 
-  const onClick2 = async (e) => {
+  function onClick2(e) {
     e.preventDefault();
 
     const userId = user.user._id;
 
-    // console.log("2 was clicked")
+    console.log("2 was clicked")
 
-    // dispatch(addVote(userId, option2Id))
+    dispatch(addVote(userId, option2Id))
 
   }
 

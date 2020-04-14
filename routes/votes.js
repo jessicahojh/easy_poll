@@ -18,7 +18,9 @@ router.post('/add', async (req, res) => {
 
     try {
 
-    const userId = req.body.userId;
+    const userId = req.body.id;
+
+    console.log("USER ID FOR VOTE", userId)
 
     const newVote = new Votes({
         userId
