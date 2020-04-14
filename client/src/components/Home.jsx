@@ -30,6 +30,8 @@ const Home = () => {
 
     } else {
 
+        console.log("ALL QUESTIONS DATA", allQuestionsData)
+
         return (
             <div>
 
@@ -42,9 +44,10 @@ const Home = () => {
                     <Col></Col>
                 </Row>
 
-                {allQuestionsData.map(question => 
+                {allQuestionsData.map((question, index) => 
                     <Poll 
                     question={question}
+                    key={index}
                     />)
                 }
 

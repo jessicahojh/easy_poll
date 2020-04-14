@@ -13,6 +13,8 @@ export const DELETE_QUESTION = 'DELETE_QUESTION';
 
 export const SELECT_OPTION = 'SELECT_OPTION';
 
+export const ADD_VOTE = 'ADD_VOTE';
+
 
 
 

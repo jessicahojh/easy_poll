@@ -18,10 +18,10 @@ router.post('/add', async (req, res) => {
 
     try {
 
-    const user = req.body.userId;
+    const userId = req.body.userId;
 
     const newVote = new Votes({
-        userId: user
+        userId
       });
 
     await newVote.save()
