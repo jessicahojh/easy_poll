@@ -26,7 +26,7 @@ const Poll = ({ question }) => {
     
     const number = 0
 
-    dispatch(addVote(userId, option1Id, number))
+    dispatch(addVote(userId, option1Id, questionId, number))
 
   }
 
@@ -39,7 +39,7 @@ const Poll = ({ question }) => {
 
     const number = 1
 
-    dispatch(addVote(userId, option2Id, number))
+    dispatch(addVote(userId, option2Id, questionId, number))
 
   }
 

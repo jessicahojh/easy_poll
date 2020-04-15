@@ -18,12 +18,18 @@ router.post('/add', async (req, res) => {
 
     try {
 
-    const userId = req.body.id;
+    console.log("REQ BODY", req.body)
 
-    console.log("USER ID FOR VOTE", userId)
+    const userId = req.body[0].userId;
+    const optionId = req.body[1].optionId;
+    const questionId = req.body[2].questionId;
+
+    console.log("VOTE REQ", userId, optionId, questionId)
 
     const newVote = new Votes({
-        userId
+        userId,
+        optionId,
+        questionId
       });
 
     await newVote.save()

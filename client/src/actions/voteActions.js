@@ -3,13 +3,13 @@ import {
 } from './types';
 
   // Add Vote to server
-  export const addVote = (userId, optionId) => async dispatch => {
+  export const addVote = (userId, optionId, questionId, index) => async dispatch => {
 
-    console.log("plz be here", userId, optionId)
+    console.log("plz be here", userId, optionId, questionId, index)
 
     const voteRes = await fetch('/votes/add', {
       method: 'POST',
-      body: JSON.stringify({id: userId}),
+      body: JSON.stringify([{userId}, {optionId}, {questionId}]),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -21,7 +21,7 @@ import {
 
     await fetch('/options/addVote', {
         method: 'POST',
-        body: JSON.stringify([{optionId}, addVoteData]),
+        body: JSON.stringify([{optionId}, addVoteData, index]),
         headers: {
           'Content-Type': 'application/json'
         }
