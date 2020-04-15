@@ -6,8 +6,9 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
+const Votes = require('../models/Votes');
 
-// @route     POST api/users
+// @route     POST /users
 // @desc      Regiter a user
 // @access    Public
 router.post(
@@ -73,7 +74,7 @@ router.post(
   }
 );
 
-// @route     GET api/users
+// @route     GET /users
 // @desc      Get a user's ID
 // @access    Public
 
@@ -96,7 +97,7 @@ router.get(
 );
 
 
-// @route     DELETE api/users
+// @route     DELETE /users
 // @desc      Delete a user
 // @access    Public
 
@@ -110,6 +111,29 @@ router.delete(
       if (user) {
         await User.findOneAndDelete(req.body);
         return res.json({ msg: 'User exists and deleted' });
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+// @route     GET /users
+// @desc      Get all question id that the user voted on
+// @access    Public
+
+router.get('/getUsersVote',
+  async (req, res) => {
+
+    const id = req.body.userId
+
+    try {
+      let userVote = await Votes.find({userId: id});
+
+      if (userVote) {
+        return res.json(userVote);
       }
 
     } catch (err) {
