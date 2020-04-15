@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import Poll from './Poll';
+import Result from './Result';
 import QuestionForm from './QuestionForm';
 
 import Container from 'react-bootstrap/Container';
@@ -46,6 +47,13 @@ const Home = () => {
 
                 {allQuestionsData.map((question, index) => 
                     <Poll 
+                    question={question}
+                    key={index}
+                    />)
+                }
+
+                {allQuestionsData.map((question, index) => 
+                    <Result
                     question={question}
                     key={index}
                     />)
