@@ -8,9 +8,16 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 const Home = () => {
 
+    const dispatch = useDispatch();
+
     const [allQuestionsData, setAllQuestionsData] = useState(null);
+    const [allVoted, setAllVoted] = useState(null);
+
+    const userId = useSelector((state) => state.users.userId)
 
     useEffect(() => {
         if (allQuestionsData === null){
@@ -20,9 +27,27 @@ const Home = () => {
                 setAllQuestionsData(data)
             });
         }
-    }, [allQuestionsData]);
+        if (allVoted === null){
+        fetch(`/users/getUsersVote/?userId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                setAllVoted(data)
+            });
+        }
+    }, [allQuestionsData, allVoted]);
 
-    if (allQuestionsData === null) {
+
+    // function getResults(){
+
+    // };
+
+
+    // function getPolls(){
+
+    // }
+
+
+    if (allQuestionsData === null && allVoted === null) {
         return (
             <div>
                 <h2> Loading...</h2>
@@ -31,7 +56,11 @@ const Home = () => {
 
     } else {
 
+        // dispatch();
+
+
         console.log("ALL QUESTIONS DATA", allQuestionsData)
+        console.log("ALL VOTES DATA", allVoted)
 
         return (
             <div>
@@ -46,18 +75,20 @@ const Home = () => {
                 </Row>
 
                 {allQuestionsData.map((question, index) => 
-                    <Poll 
-                    question={question}
-                    key={index}
-                    />)
-                }
+                    <>
+                        <Poll 
+                        question={question}
+                        key={index}
+                        />
 
-                {allQuestionsData.map((question, index) => 
-                    <Result
-                    question={question}
-                    key={index}
-                    />)
-                }
+                        <Result
+                        question={question}
+                        key={index}
+                        />
+                    </>       
+                )}
+
+                {/* {allVoted.map(obj => <div>{obj}</div>)} */}
 
             </Container>
                 

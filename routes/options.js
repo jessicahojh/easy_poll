@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Options = require('../models/Options');
+const Questions = require('../models/Options');
 
 // @route   GET /options
 // @desc    Get all options
@@ -47,8 +48,9 @@ router.post('/add', async (req, res) => {
 router.post('/addVote', async (req, res) => {
     const optionId = req.body[0].optionId;
     const voteRes = req.body[1];
+    const index = req.body[2];
 
-    console.log("CHECKING", optionId, voteRes)
+    console.log("CHECKING", optionId, voteRes, index)
 
     const voteAdd = await Options.findOneAndUpdate(
         { _id: optionId },
@@ -56,7 +58,25 @@ router.post('/addVote', async (req, res) => {
     );
 
     await voteAdd.save
-    .then(res.json('Vote added to an option!'))
+    // .then(res.json('Vote added to an option!'))
+
+    // the above only added vote to option
+    // need to also update whole option in question object 
+
+    const updatedOptionObj = Options.find({ _id: optionId })
+
+    console.log("found id", updatedOptionObj)
+
+    const updateQuestion = await Questions.findOneAndUpdate(
+        {"options.index._id": optionId}
+        // {"options.index": updatedOptionObj}
+    )
+
+    console.log("UPDATEQUESTION", updateQuestion)
+
+    await updateQuestion.save
+
+    // .then(res.json('Option obj updated in Question obj!'))
 });
 
 module.exports = router;

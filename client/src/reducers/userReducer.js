@@ -9,6 +9,7 @@ import {
   
   const initialState = {
     user: null,
+    userId: null,
     isAuthenticated: false
   };
   
@@ -21,6 +22,7 @@ import {
         return {
           ...state,
           user: action.payload,
+          userId: action.payload._id,
           isAuthenticated: true
         };
 

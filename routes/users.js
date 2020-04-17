@@ -127,7 +127,7 @@ router.delete(
 router.get('/getUsersVote',
   async (req, res) => {
 
-    const id = req.body.userId
+    const id = req.query.userId;
 
     try {
       let userVote = await Votes.find({userId: id});
@@ -142,6 +142,5 @@ router.get('/getUsersVote',
     }
   }
 );
-
 
 module.exports = router;
