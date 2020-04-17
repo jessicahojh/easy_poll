@@ -20,7 +20,6 @@ router.post('/add', async (req, res) => {
 
     try {
 
-    // console.log("THE BODY", req.body)
     const userId = req.body[0].userId;
     const question = req.body[0].question;
     const options = [req.body[1], req.body[2]]

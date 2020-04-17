@@ -21,8 +21,6 @@ const Poll = ({ question }) => {
     e.preventDefault();
 
     const userId = user.user._id;
-
-    console.log("1 was clicked")
     
     const number = 0
 
@@ -34,8 +32,6 @@ const Poll = ({ question }) => {
     e.preventDefault();
 
     const userId = user.user._id;
-
-    console.log("2 was clicked")
 
     const number = 1
 

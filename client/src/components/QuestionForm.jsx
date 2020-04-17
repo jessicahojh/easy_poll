@@ -7,8 +7,6 @@ const QuestionForm = () => {
 
     const user = useSelector((state) => state.users);
 
-    // console.log("User object from the questionForm", user)
-
     const [ question, setQuestion ] = useState('');
     const [ optionA, setOptionA ] = useState('');
     const [ optionB, setOptionB ] = useState('');
@@ -19,7 +17,6 @@ const QuestionForm = () => {
       e.preventDefault();
 
       const userId = user.user._id;
-    //   console.log("User ID in questionForm", userId)
 
       const newQuestion = {
         userId,
@@ -27,8 +24,6 @@ const QuestionForm = () => {
         optionA,
         optionB,
       }
-
-      console.log("new question object", newQuestion) 
 
       const newOption1 = {
           option: optionA

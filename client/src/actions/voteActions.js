@@ -5,8 +5,6 @@ import {
   // Add Vote to server
   export const addVote = (userId, optionId, questionId, index) => async dispatch => {
 
-    console.log("plz be here", userId, optionId, questionId, index)
-
     const voteRes = await fetch('/votes/add', {
       method: 'POST',
       body: JSON.stringify([{userId}, {optionId}, {questionId}]),
@@ -16,8 +14,6 @@ import {
     });
 
     const addVoteData = await voteRes.json();
-
-    console.log("VOTERES", addVoteData)
 
     await fetch('/options/addVote', {
         method: 'POST',
