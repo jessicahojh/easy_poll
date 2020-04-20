@@ -17,6 +17,9 @@ const Home = () => {
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
 
+    // const [votedQuestions, setVotedQuestions] = []
+    // const [nonVotedQuestions, setNonVotedQuestions] = []
+
     const userId = useSelector((state) => state.users.userId)
 
     useEffect(() => {
@@ -37,17 +40,33 @@ const Home = () => {
     }, [allQuestionsData, allVoted]);
 
 
-    // function getResults(){
+    function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
-    // };
+        const usersVotedQuestionId = []
+
+        for (let i = 0; i < allVoted.length; i++) {
+            usersVotedQuestionId.push(allVoted[i].questionId)
+        }
+
+        console.log("USERS VOTED QUES ID", usersVotedQuestionId)
+
+        const votedQuestions = []
+        const nonVotedQuestions = []
+
+        for (let i = 0; i < allQuestionsData.length; i++) {
+            if (usersVotedQuestionId.includes(allQuestionsData[i]._id)){
+                votedQuestions.push(allQuestionsData[i])
+                console.log("includes and i is", i)
+            } else {
+                nonVotedQuestions.push(allQuestionsData[i])
+                console.log("does not include and i is", i)
+            }
+        }
+        return [votedQuestions, nonVotedQuestions]
+    };
 
 
-    // function getPolls(){
-
-    // }
-
-
-    if (allQuestionsData === null && allVoted === null) {
+    if (allQuestionsData === null || allVoted === null) {
         return (
             <div>
                 <h2> Loading...</h2>
@@ -56,11 +75,13 @@ const Home = () => {
 
     } else {
 
-        // dispatch();
-
-
         console.log("ALL QUESTIONS DATA", allQuestionsData)
         console.log("ALL VOTES DATA", allVoted)
+
+        const answers = getVotedOrNonVotedQuestions(allVoted, allQuestionsData)
+
+        console.log("VOTED", answers[0])
+        console.log("NONVOTED", answers[1])
 
         return (
             <div>
