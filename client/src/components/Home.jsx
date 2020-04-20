@@ -17,6 +17,9 @@ const Home = () => {
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
 
+    // const [votedQuestions, setVotedQuestions] = useState(null);
+    // const [nonVotedQuestions, setNonVotedQuestions] = useState(null);
+
     const userId = useSelector((state) => state.users.userId)
 
     useEffect(() => {
@@ -80,6 +83,9 @@ const Home = () => {
         console.log("VOTED", answers[0])
         console.log("NONVOTED", answers[1])
 
+        // setVotedQuestions(answers[0])
+        // setNonVotedQuestions(answers[1])
+
         return (
             <div>
 
@@ -92,7 +98,21 @@ const Home = () => {
                     <Col></Col>
                 </Row>
 
-                {allQuestionsData.map((question, index) => 
+                {answers[0].map((question, index) => 
+                        <Result
+                        question={question}
+                        key={index}
+                        />     
+                )}
+
+                {answers[1].map((question, index) => 
+                        <Poll 
+                        question={question}
+                        key={index}
+                        />      
+                )}
+
+                {/* {allQuestionsData.map((question, index) => 
                     <>
                         <Poll 
                         question={question}
@@ -104,7 +124,7 @@ const Home = () => {
                         key={index}
                         />
                     </>       
-                )}
+                )} */}
 
                 {/* {allVoted.map(obj => <div>{obj}</div>)} */}
 
