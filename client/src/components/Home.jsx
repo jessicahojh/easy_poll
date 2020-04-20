@@ -17,9 +17,6 @@ const Home = () => {
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
 
-    // const [votedQuestions, setVotedQuestions] = []
-    // const [nonVotedQuestions, setNonVotedQuestions] = []
-
     const userId = useSelector((state) => state.users.userId)
 
     useEffect(() => {
