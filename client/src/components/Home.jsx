@@ -8,17 +8,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
 
-    const dispatch = useDispatch();
-
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
-
-    // const [votedQuestions, setVotedQuestions] = useState(null);
-    // const [nonVotedQuestions, setNonVotedQuestions] = useState(null);
 
     const userId = useSelector((state) => state.users.userId)
 
@@ -48,18 +43,14 @@ const Home = () => {
             usersVotedQuestionId.push(allVoted[i].questionId)
         }
 
-        console.log("USERS VOTED QUES ID", usersVotedQuestionId)
-
         const votedQuestions = []
         const nonVotedQuestions = []
 
         for (let i = 0; i < allQuestionsData.length; i++) {
             if (usersVotedQuestionId.includes(allQuestionsData[i]._id)){
                 votedQuestions.push(allQuestionsData[i])
-                console.log("includes and i is", i)
             } else {
                 nonVotedQuestions.push(allQuestionsData[i])
-                console.log("does not include and i is", i)
             }
         }
         return [votedQuestions, nonVotedQuestions]
@@ -78,13 +69,10 @@ const Home = () => {
         console.log("ALL QUESTIONS DATA", allQuestionsData)
         console.log("ALL VOTES DATA", allVoted)
 
-        const answers = getVotedOrNonVotedQuestions(allVoted, allQuestionsData)
+        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData)
 
-        console.log("VOTED", answers[0])
-        console.log("NONVOTED", answers[1])
-
-        // setVotedQuestions(answers[0])
-        // setNonVotedQuestions(answers[1])
+        console.log("VOTED", votedAndNonVoted[0])
+        console.log("NONVOTED", votedAndNonVoted[1])
 
         return (
             <div>
@@ -98,35 +86,19 @@ const Home = () => {
                     <Col></Col>
                 </Row>
 
-                {answers[0].map((question, index) => 
+                {votedAndNonVoted[0].map((question, index) => 
                         <Result
                         question={question}
                         key={index}
                         />     
                 )}
 
-                {answers[1].map((question, index) => 
+                {votedAndNonVoted[1].map((question, index) => 
                         <Poll 
                         question={question}
                         key={index}
                         />      
                 )}
-
-                {/* {allQuestionsData.map((question, index) => 
-                    <>
-                        <Poll 
-                        question={question}
-                        key={index}
-                        />
-
-                        <Result
-                        question={question}
-                        key={index}
-                        />
-                    </>       
-                )} */}
-
-                {/* {allVoted.map(obj => <div>{obj}</div>)} */}
 
             </Container>
                 
