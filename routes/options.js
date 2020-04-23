@@ -63,7 +63,7 @@ router.post('/addVote', async (req, res) => {
     // the above only added vote to option
     // need to also update whole option in question object 
 
-    const updatedOptionObj = Options.find({ _id: optionId })
+    const updatedOptionObj = await Options.find({ _id: optionId })
 
     console.log("found id", updatedOptionObj)
 
