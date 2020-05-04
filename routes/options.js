@@ -63,18 +63,22 @@ router.post('/addVote', async (req, res) => {
     // the above only added vote to option
     // need to also update whole option in question object 
 
-    const updatedOptionObj = await Options.find({ _id: optionId })
+    // doesn't work -----start-----
 
-    console.log("found id", updatedOptionObj)
+    // const updatedOptionObj = await Options.find({ _id: optionId })
 
-    const updateQuestion = await Questions.findOneAndUpdate(
-        {"options.index._id": optionId}
-        // {"options.index": updatedOptionObj}
-    )
+    // console.log("found id", updatedOptionObj)
 
-    console.log("UPDATEQUESTION", updateQuestion)
+    // const updateQuestion = await Questions.findOneAndUpdate(
+    //     {"options[index]._id": optionId},
+    //     {"options[index]": updatedOptionObj}
+    // )
 
-    await updateQuestion.save
+    // console.log("UPDATEQUESTION", updateQuestion)
+
+    // await updateQuestion.save
+
+    // ----------------end-----------
 
     // .then(res.json('Option obj updated in Question obj!'))
 });

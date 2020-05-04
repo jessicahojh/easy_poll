@@ -14,6 +14,7 @@ const Home = () => {
 
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
+    const [voteStats, setVoteStats] = useState(null);
 
     const userId = useSelector((state) => state.users.userId)
 
@@ -32,7 +33,14 @@ const Home = () => {
                 setAllVoted(data)
             });
         }
-    }, [allQuestionsData, allVoted]);
+        if (voteStats === null){
+        fetch(`/votes`)
+            .then(response => response.json())
+            .then(data => {
+                setVoteStats(data)
+            });
+        }
+    }, [allQuestionsData, allVoted, voteStats]);
 
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
@@ -66,13 +74,7 @@ const Home = () => {
 
     } else {
 
-        console.log("ALL QUESTIONS DATA", allQuestionsData)
-        console.log("ALL VOTES DATA", allVoted)
-
         const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData)
-
-        console.log("VOTED", votedAndNonVoted[0])
-        console.log("NONVOTED", votedAndNonVoted[1])
 
         return (
             <div>
@@ -90,6 +92,7 @@ const Home = () => {
                         <Result
                         question={question}
                         key={index}
+                        voteStats={voteStats}
                         />     
                 )}
 

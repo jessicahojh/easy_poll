@@ -8,7 +8,9 @@ const Votes = require('../models/Votes');
 // @access  Public
 
 router.get('/', (req, res) => {
-    res.send("Get all votes");
+    Votes.find({})
+    .then(votes => res.json(votes))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // @route   POST /votes
