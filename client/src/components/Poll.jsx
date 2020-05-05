@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { Doughnut } from 'react-chartjs-2';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVote } from '../actions/voteActions';
 
@@ -14,9 +13,9 @@ const Poll = ({ question }) => {
 
   const questionTitle = question.question;
   const option1 = question.options[0].option;
-  const option1Id = question.options[0]._id
+  const option1Id = question.options[0]._id;
   const option2 = question.options[1].option;
-  const option2Id = question.options[1]._id
+  const option2Id = question.options[1]._id;
   
   const questionId = question._id;
 
@@ -28,7 +27,7 @@ const Poll = ({ question }) => {
     fetch(`/votes`)
         .then(response => response.json())
         .then(data => {
-            setVoteStats(data)
+            setVoteStats(data);
         });
     }
   }, [voteStats]);
@@ -38,26 +37,18 @@ const Poll = ({ question }) => {
     e.preventDefault();
 
     const userId = user.user._id;
-    
     const number = 0;
-
     dispatch(addVote(userId, option1Id, questionId, number));
-
     setShowComponent(true);
-
   }
 
   function onClick2(e) {
     e.preventDefault();
 
     const userId = user.user._id;
-
-    const number = 1
-
+    const number = 1;
     dispatch(addVote(userId, option2Id, questionId, number))
-
     setShowComponent(true);
-
   }
 
   return (

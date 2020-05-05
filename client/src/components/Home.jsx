@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 import Poll from './Poll';
 import Result from './Result';
@@ -16,28 +16,28 @@ const Home = () => {
     const [allVoted, setAllVoted] = useState(null);
     const [voteStats, setVoteStats] = useState(null);
 
-    const userId = useSelector((state) => state.users.userId)
+    const userId = useSelector((state) => state.users.userId);
 
     useEffect(() => {
         if (allQuestionsData === null){
         fetch(`/questions`)
             .then(response => response.json())
             .then(data => {
-                setAllQuestionsData(data)
+                setAllQuestionsData(data);
             });
         }
         if (allVoted === null){
         fetch(`/users/getUsersVote/?userId=${userId}`)
             .then(response => response.json())
             .then(data => {
-                setAllVoted(data)
+                setAllVoted(data);
             });
         }
         if (voteStats === null){
         fetch(`/votes`)
             .then(response => response.json())
             .then(data => {
-                setVoteStats(data)
+                setVoteStats(data);
             });
         }
     }, [allQuestionsData, allVoted, voteStats]);
@@ -45,23 +45,23 @@ const Home = () => {
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
-        const usersVotedQuestionId = []
+        const usersVotedQuestionId = [];
 
         for (let i = 0; i < allVoted.length; i++) {
-            usersVotedQuestionId.push(allVoted[i].questionId)
+            usersVotedQuestionId.push(allVoted[i].questionId);
         }
 
-        const votedQuestions = []
-        const nonVotedQuestions = []
+        const votedQuestions = [];
+        const nonVotedQuestions = [];
 
         for (let i = 0; i < allQuestionsData.length; i++) {
             if (usersVotedQuestionId.includes(allQuestionsData[i]._id)){
-                votedQuestions.push(allQuestionsData[i])
+                votedQuestions.push(allQuestionsData[i]);
             } else {
-                nonVotedQuestions.push(allQuestionsData[i])
+                nonVotedQuestions.push(allQuestionsData[i]);
             }
         }
-        return [votedQuestions, nonVotedQuestions]
+        return [votedQuestions, nonVotedQuestions];
     };
 
 
@@ -74,7 +74,7 @@ const Home = () => {
 
     } else {
 
-        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData)
+        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
 
         return (
             <div>
