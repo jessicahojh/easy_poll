@@ -24,8 +24,8 @@ const Result = ({ question, voteStats }) => {
 
   let total = opt1Votes + opt2Votes
 
-  let opt1percentage = opt1Votes/total
-  let opt2percentage = opt2Votes/total
+  let opt1percentage = (opt1Votes/total) * 100
+  let opt2percentage = (opt2Votes/total) * 100
 
   const state = {
     labels: [option1, option2],
@@ -42,7 +42,6 @@ const Result = ({ question, voteStats }) => {
         '#003350',
         '#35014F'
         ],
-        // data: [40, 60]
         data: [opt1percentage, opt2percentage]
       }
     ]
@@ -51,18 +50,22 @@ const Result = ({ question, voteStats }) => {
     return (
         <div>
             
-            <Doughnut
+            <Doughnut 
                 data={state}
+                width={"80%"}
                 options={{
                     title:{
                     display:true,
                     text: questionTitle,
-                    fontSize:50
+                    fontSize:20
                     },
                     legend:{
                     display:true,
                     position:'right'
-                    }
+                    },
+                    rotation: 1 * Math.PI,
+                    circumference: 1 * Math.PI,
+                    maintainAspectRatio: false
                 }}
             />
             
