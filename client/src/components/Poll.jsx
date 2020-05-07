@@ -56,7 +56,7 @@ const Poll = ({ question }) => {
     {showComponent ?  <Result
                         question={question}
                         voteStats={voteStats}
-                      /> : 
+                      /> :
 
     <div id={questionId}>
       <div>{questionTitle}</div>

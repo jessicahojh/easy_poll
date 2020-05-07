@@ -19,29 +19,37 @@ const Home = () => {
     const userId = useSelector((state) => state.users.userId);
 
     useEffect(() => {
-        if (allQuestionsData === null){
+
+        Promise.all([
+            fetchAllQuestions(),
+            fetchAllVotes(),
+            fetchVoteStats(),
+          ]);
+    }, [allQuestionsData, allVoted, voteStats]);
+
+    function fetchAllQuestions(){
         fetch(`/questions`)
             .then(response => response.json())
             .then(data => {
                 setAllQuestionsData(data);
             });
-        }
-        if (allVoted === null){
+    }
+
+    function fetchAllVotes(){
         fetch(`/users/getUsersVote/?userId=${userId}`)
             .then(response => response.json())
             .then(data => {
                 setAllVoted(data);
             });
-        }
-        if (voteStats === null){
+    }
+
+    function fetchVoteStats(){
         fetch(`/votes`)
             .then(response => response.json())
             .then(data => {
                 setVoteStats(data);
             });
-        }
-    }, [allQuestionsData, allVoted, voteStats]);
-
+    }
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
@@ -64,8 +72,7 @@ const Home = () => {
         return [votedQuestions, nonVotedQuestions];
     };
 
-
-    if (allQuestionsData === null || allVoted === null) {
+    if (allQuestionsData === null || allVoted === null || voteStats === null) {
         return (
             <div>
                 <h2> Loading...</h2>
@@ -73,12 +80,11 @@ const Home = () => {
         )
 
     } else {
-
         const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
 
         return (
             <div>
-
+            <h3>rendering</h3>
             <Container>
                 <Row>
                     <Col></Col>
