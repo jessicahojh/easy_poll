@@ -57,8 +57,8 @@ router.post('/addVote', async (req, res) => {
         { $push: {votes: voteRes}}
     );
 
-    await voteAdd.save
-    // .then(res.json('Vote added to an option!'))
+    await voteAdd.save()
+    .then(res.json('Vote added to an option!'))
 
     // the above only added vote to option
     // need to also update whole option in question object 

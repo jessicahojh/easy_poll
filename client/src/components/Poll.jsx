@@ -20,6 +20,9 @@ const Poll = ({ question }) => {
   const questionId = question._id;
 
   const user = useSelector((state) => state.users);
+  // const user = useSelector((state) => state);
+
+  // console.log("NEW USER", user)
 
 
   useEffect(() => {
@@ -27,6 +30,7 @@ const Poll = ({ question }) => {
     fetch(`/votes`)
         .then(response => response.json())
         .then(data => {
+          console.log("fetching in poll component")
             setVoteStats(data);
         });
     }
@@ -39,6 +43,7 @@ const Poll = ({ question }) => {
     const userId = user.user._id;
     const number = 0;
     dispatch(addVote(userId, option1Id, questionId, number));
+    console.log("called two fetches")
     setShowResultComponent(true);
   }
 

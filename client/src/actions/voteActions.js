@@ -12,18 +12,25 @@ import {
         'Content-Type': 'application/json'
       }
     });
+    
+    console.log("after posting to Db")
 
     const addVoteData = await voteRes.json();
 
-    await fetch('/options/addVote', {
+    console.log("about to add vote to options")
+
+    const abc = await fetch('/options/addVote', {
         method: 'POST',
         body: JSON.stringify([{optionId}, addVoteData, index]),
         headers: {
           'Content-Type': 'application/json'
         }
       });
+
+    console.log("about to call dispatch", optionId)
   
     dispatch({
-      type: ADD_VOTE
+      type: ADD_VOTE,
+      payload: optionId
     });
   };
