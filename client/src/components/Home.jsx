@@ -17,15 +17,20 @@ const Home = () => {
     const [voteStats, setVoteStats] = useState(null);
 
     const userId = useSelector((state) => state.users.userId);
+    // const userId = useSelector((state) => state.users.user._id);
+
+    const newQuestion = useSelector((state) => state);
+    console.log("NEW QUESTION STATE", newQuestion.questions)
+
+    console.log("USER ID", userId)
 
     useEffect(() => {
-
         Promise.all([
             fetchAllQuestions(),
             fetchAllVotes(),
             fetchVoteStats(),
           ]);
-    }, [allQuestionsData, allVoted, voteStats]);
+    }, [userId, newQuestion]);
 
     function fetchAllQuestions(){
         fetch(`/questions`)
@@ -50,6 +55,7 @@ const Home = () => {
                 setVoteStats(data);
             });
     }
+
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
@@ -80,11 +86,11 @@ const Home = () => {
         )
 
     } else {
+      
         const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
 
         return (
             <div>
-            <h3>rendering</h3>
             <Container>
                 <Row>
                     <Col></Col>

@@ -6,7 +6,7 @@ import Result from './Result';
 
 const Poll = ({ question }) => {
 
-  const [showComponent, setShowComponent] = useState(false);
+  const [showResultComponent, setShowResultComponent] = useState(false);
   const [voteStats, setVoteStats] = useState(null);
 
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Poll = ({ question }) => {
     const userId = user.user._id;
     const number = 0;
     dispatch(addVote(userId, option1Id, questionId, number));
-    setShowComponent(true);
+    setShowResultComponent(true);
   }
 
   function onClick2(e) {
@@ -48,12 +48,12 @@ const Poll = ({ question }) => {
     const userId = user.user._id;
     const number = 1;
     dispatch(addVote(userId, option2Id, questionId, number))
-    setShowComponent(true);
+    setShowResultComponent(true);
   }
 
   return (
     <>
-    {showComponent ?  <Result
+    {showResultComponent ?  <Result
                         question={question}
                         voteStats={voteStats}
                       /> :
