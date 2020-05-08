@@ -10,7 +10,6 @@ const QuestionForm = () => {
     const [ question, setQuestion ] = useState('');
     const [ optionA, setOptionA ] = useState('');
     const [ optionB, setOptionB ] = useState('');
-    // const [showPollComponent, setShowPollComponent] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -23,7 +22,7 @@ const QuestionForm = () => {
         userId,
         question,
         optionA,
-        optionB,
+        optionB
       };
 
       const newOption1 = {
@@ -35,8 +34,6 @@ const QuestionForm = () => {
       };
 
       dispatch(addQuestionAndOptions(newQuestion, newOption1, newOption2));
-  
-    //   setShowPollComponent(true);
 
       // Clear Fields
       setQuestion('');

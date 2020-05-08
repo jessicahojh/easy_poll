@@ -17,19 +17,14 @@ const Home = () => {
     const [voteStats, setVoteStats] = useState(null);
 
     const userId = useSelector((state) => state.users.userId);
-    // const userId = useSelector((state) => state.users.user._id);
 
     const newQuestion = useSelector((state) => state);
-    const proof = useSelector((state) => state);
-
-    console.log("PROOF", proof)
 
     useEffect(() => {
-        console.log("RUNNING FETCHALL")
         Promise.all([
             fetchAllQuestions(),
             fetchAllVotes(),
-            fetchVoteStats(),
+            fetchVoteStats()
           ]);
     }, [userId, newQuestion]);
 
@@ -37,7 +32,6 @@ const Home = () => {
         fetch(`/questions`)
             .then(response => response.json())
             .then(data => {
-                console.log("fetching")
                 setAllQuestionsData(data);
             });
     }
@@ -46,7 +40,6 @@ const Home = () => {
         fetch(`/users/getUsersVote/?userId=${userId}`)
             .then(response => response.json())
             .then(data => {
-                console.log("fetching")
                 setAllVoted(data);
             });
     }
@@ -55,11 +48,9 @@ const Home = () => {
         fetch(`/votes`)
             .then(response => response.json())
             .then(data => {
-                console.log("fetching")
                 setVoteStats(data);
             });
     }
-
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 

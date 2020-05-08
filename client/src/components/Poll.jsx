@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVote } from '../actions/voteActions';
 
-import Result from './Result';
-
 const Poll = ({ question }) => {
 
   const [voteStats, setVoteStats] = useState(null);
@@ -38,7 +36,6 @@ const Poll = ({ question }) => {
     const userId = user.user._id;
     const number = 0;
     dispatch(addVote(userId, option1Id, questionId, number));
-    console.log("called two fetches")
   }
 
   function onClick2(e) {
@@ -46,7 +43,7 @@ const Poll = ({ question }) => {
 
     const userId = user.user._id;
     const number = 1;
-    dispatch(addVote(userId, option2Id, questionId, number))
+    dispatch(addVote(userId, option2Id, questionId, number));
   }
 
   return (
