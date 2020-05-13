@@ -7,6 +7,7 @@ import ProfilePic from './ProfilePic';
 import Posts from './Posts';
 import Followers from './Followers';
 import Following from './Following';
+import Bio from './Bio';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -99,6 +100,10 @@ const Home = () => {
                 </Row>
 
                 <Row>
+                    <Bio/>
+                </Row>
+
+                <Row>
                     <Col></Col>
                     <Col xs={6}>
                     <QuestionForm/>
@@ -106,13 +111,17 @@ const Home = () => {
                     <Col></Col>
                 </Row>
 
+                <Row>
                 {votedAndNonVoted[0].map((question, index) => 
+                        <Col xs={4}>
                         <Result
                         question={question}
                         key={index}
                         voteStats={voteStats}
-                        />     
+                        />  
+                        </Col>   
                 )}
+                </Row>
 
                 {votedAndNonVoted[1].map((question, index) => 
                         <Poll 

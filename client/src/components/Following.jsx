@@ -5,7 +5,10 @@ const Following = () => {
 
     return (
 
-        <div className='three-box'>33 Following</div>
+        <div className='three-box'>
+            <div className='count'>33</div>
+            <div>Following</div>
+        </div>
     )
 }
 

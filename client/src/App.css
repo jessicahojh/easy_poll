@@ -1,6 +1,10 @@
+#root {
+  background-color: rgb(17, 17, 18);
+}
+
 .navbar {
   color: white;
-  background-color: cornflowerblue;
+  background-color: rgb(17, 17, 18);
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 2rem;
@@ -25,4 +29,40 @@
 
 .center {
   text-align: center;
+}
+
+.app {
+  background-color: rgb(17, 17, 18);
+}
+
+label {
+  color: white;
+}
+
+.questiontitle {
+  color: white;
+}
+
+.poll {
+  border-style: solid;
+}
+
+.three-box {
+  color: white;
+  text-align: center;
+}
+
+.count {
+  font-weight: bold;
+}
+
+.pic {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+}
+
+.bio {
+  color: white;
+  margin: 30px;
 }

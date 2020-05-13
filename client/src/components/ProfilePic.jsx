@@ -1,11 +1,12 @@
 import React from 'react';
+import pic from '../static/my_pic.jpg';
 
 const ProfilePic = () => {
 
 
     return (
 
-        <div>Picture Here</div>
+        <img src={pic} alt="profilepic" className='pic'/>
     )
 }
 

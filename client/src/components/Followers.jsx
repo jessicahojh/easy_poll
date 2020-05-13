@@ -5,7 +5,10 @@ const Followers = () => {
 
     return (
 
-        <div className='three-box'>17 Followers</div>
+        <div className='three-box'>
+            <div className='count'>17</div>
+            <div>Followers</div>
+        </div>
     )
 }
 
