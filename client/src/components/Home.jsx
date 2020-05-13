@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 import Poll from './Poll';
 import Result from './Result';
 import QuestionForm from './QuestionForm';
+import ProfilePic from './ProfilePic';
+import Posts from './Posts';
+import Followers from './Followers';
+import Following from './Following';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -85,8 +89,15 @@ const Home = () => {
         const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
 
         return (
-            <div>
+            <div className='app'>
             <Container>
+                <Row>
+                    <Col><ProfilePic/></Col>
+                    <Col><Posts/></Col>
+                    <Col><Followers/></Col>
+                    <Col><Following/></Col>
+                </Row>
+
                 <Row>
                     <Col></Col>
                     <Col xs={6}>
