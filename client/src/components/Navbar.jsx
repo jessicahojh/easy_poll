@@ -2,38 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Navbar = () => {
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+const NavbarC = () => {
 
   const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
   return (
-    <div className='navbar'>
-      <h1>
-        Easy Poll
-      </h1>
-      <br></br>
-      <ul>
-        <li>
-            <Link className='navLink' to='/'>Home</Link>
-        </li>
-        <li>
-            <Link className='navLink' to='/about'>About</Link>
-        </li>
-        <li>
-          {
-            isAuthenticated ? <Link className='navLink' to='/logout'>Logout</Link>
-            : <Link className='navLink' to='/login'>Login</Link>
-          }
-        </li>
-        <li>
-          {
-            isAuthenticated ? ''
-            : <Link className='navLink' to='/register'>Register</Link>
-          }
-        </li>
-      </ul>
-    </div>
-  );
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="/">Easy Poll</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/about">About</Nav.Link>
+          {isAuthenticated ? <Nav.Link href="/logout">Logout</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link>}
+          {isAuthenticated ? '' : <Nav.Link href="/register">Register</Nav.Link>}
+          <NavDropdown title="Account" id="basic-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Action</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  )
 };
 
-export default Navbar;
+export default NavbarC;

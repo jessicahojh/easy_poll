@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Navbar from './components/Navbar';
+import NavbarC from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Login from './components/auth/Login';
@@ -27,7 +27,7 @@ const App = () => {
     
       <Router>
         <Fragment>
-          <Navbar/>
+          <NavbarC/>
           <Container>
             <Switch>
               <Route exact path='/' component={Home}/>
