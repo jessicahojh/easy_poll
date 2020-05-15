@@ -6,13 +6,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import '../App.css';
+
 const NavbarC = () => {
 
   const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/">Easy Poll</Navbar.Brand>
+    <Navbar expand="lg" fixed="top" bg="dark" variant="dark">
+      <Navbar.Brand href="/">InstaPoll</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
