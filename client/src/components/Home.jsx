@@ -13,6 +13,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+
 import { useSelector } from 'react-redux';
 
 const Home = () => {
@@ -103,13 +106,22 @@ const Home = () => {
                     <Bio/>
                 </Row>
 
-                <Row>
+                {/* <Row>
                     <Col></Col>
                     <Col xs={6}>
                     <QuestionForm/>
                     </Col>
                     <Col></Col>
-                </Row>
+                </Row> */}
+
+                <Tabs defaultActiveKey="Yours" id="uncontrolled-tab-example">
+                    <Tab eventKey="Yours" title="Your Created Polls">
+                        
+                    </Tab>
+                    <Tab eventKey="Others" title="Other Polls You Voted On">
+                       
+                    </Tab>
+                </Tabs>
 
                 <Row>
                 {votedAndNonVoted[0].map((question, index) => 
