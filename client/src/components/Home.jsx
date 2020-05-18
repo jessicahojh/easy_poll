@@ -116,38 +116,55 @@ const Home = () => {
                 </Row> */}
 
                 <Row>
-                    <Button variant="secondary" size="lg" as='custom-class' block>
+                    <Button variant="secondary" size="lg" block>
                         Edit Profile
                     </Button>
                 </Row>
 
+                <div><br></br></div>
+
                 <Tabs defaultActiveKey="Yours" id="uncontrolled-tab-example">
                     <Tab eventKey="Yours" title="Your Created Polls">
-                        
+                        <Row>
+                            {votedAndNonVoted[0].map((question, index) => 
+                                    <Col xs={4}>
+                                    <Result
+                                    question={question}
+                                    key={index}
+                                    voteStats={voteStats}
+                                    />  
+                                    </Col>   
+                            )}
+                        </Row>
+
+                        {votedAndNonVoted[1].map((question, index) => 
+                                <Poll 
+                                question={question}
+                                key={index}
+                                />      
+                        )}
                     </Tab>
                     <Tab eventKey="Others" title="Other Polls You Voted On">
-                       
+                        <Row>
+                            {votedAndNonVoted[0].map((question, index) => 
+                                    <Col xs={4}>
+                                    <Result
+                                    question={question}
+                                    key={index}
+                                    voteStats={voteStats}
+                                    />  
+                                    </Col>   
+                            )}
+                        </Row>
+
+                        {votedAndNonVoted[1].map((question, index) => 
+                                <Poll 
+                                question={question}
+                                key={index}
+                                />      
+                        )} 
                     </Tab>
                 </Tabs>
-
-                <Row>
-                {votedAndNonVoted[0].map((question, index) => 
-                        <Col xs={4}>
-                        <Result
-                        question={question}
-                        key={index}
-                        voteStats={voteStats}
-                        />  
-                        </Col>   
-                )}
-                </Row>
-
-                {votedAndNonVoted[1].map((question, index) => 
-                        <Poll 
-                        question={question}
-                        key={index}
-                        />      
-                )}
 
             </Container>
                 
