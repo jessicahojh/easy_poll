@@ -13,6 +13,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import Button from 'react-bootstrap/Button';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
@@ -113,6 +114,12 @@ const Home = () => {
                     </Col>
                     <Col></Col>
                 </Row> */}
+
+                <Row>
+                    <Button variant="secondary" size="lg" as='custom-class' block>
+                        Edit Profile
+                    </Button>
+                </Row>
 
                 <Tabs defaultActiveKey="Yours" id="uncontrolled-tab-example">
                     <Tab eventKey="Yours" title="Your Created Polls">
