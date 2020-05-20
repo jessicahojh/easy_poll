@@ -10,7 +10,7 @@
   padding-bottom: 70px;
 }
 
-/* Navbar */
+/* Navbar ------------------------------------------------------------------ */
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -52,6 +52,8 @@
   color: white;
 }
 
+/* ----------------------------------------------------------------------- */
+
 /* Five Icon Buttons */
 
 .icon {
@@ -61,6 +63,7 @@
 
 .buttons {
   padding-bottom: 25px;
+  padding-left: 40px;
 }
 
 /* Pic and Three Boxes */
