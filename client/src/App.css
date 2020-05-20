@@ -1,56 +1,16 @@
+/* index.html */
 #root {
   background-color: rgb(17, 17, 18);
 }
 
-.center {
-  text-align: center;
-}
-
-.app {
+/* App.jsx */
+.home {
   background-color: rgb(17, 17, 18);
   padding-top: 20px;
   padding-bottom: 70px;
 }
 
-label {
-  color: white;
-}
-
-.questiontitle {
-  color: white;
-}
-
-.poll {
-  border-style: solid;
-}
-
-.three-box {
-  color: white;
-  text-align: center;
-  padding-top: 50px;
-}
-
-.count {
-  font-weight: bold;
-}
-
-.pic {
-  height: 130px;
-  width: 130px;
-  border-radius: 50%;
-}
-
-.bio {
-  color: white;
-  margin: 30px;
-}
-
-.icon {
-  height: 40px;
-  width: 40px;
-}
-
-/* Style the navigation menu */
+/* Navbar */
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -92,6 +52,58 @@ label {
   color: white;
 }
 
+/* Five Icon Buttons */
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
 .buttons {
   padding-bottom: 25px;
 }
+
+/* Pic and Three Boxes */
+.pic {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+}
+
+.three-box {
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.count {
+  font-weight: bold;
+}
+
+/* Bio */
+.bio {
+  color: white;
+  margin: 30px;
+}
+
+/* QuestionForm.jsx */
+label {
+  color: white;
+}
+
+.create-poll-btn {
+  text-align: center;
+}
+
+/* Poll */
+
+.poll {
+  border-style: solid;
+}
+
+
+
+
+
+
+

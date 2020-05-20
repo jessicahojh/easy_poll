@@ -89,7 +89,7 @@ const QuestionForm = () => {
 
         </div>
 
-        <div className="center">
+        <div className="create-poll-btn">
         <Button type="submit" className="btn">
             Create Poll!
         </Button>

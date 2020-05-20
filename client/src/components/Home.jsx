@@ -45,7 +45,7 @@ const Home = () => {
     }
 
     return (
-        <div className='app'>
+        <div className='home'>
 
             <div className="buttons">
                 <Row>

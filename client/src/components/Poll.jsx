@@ -48,11 +48,11 @@ const Poll = ({ question }) => {
 
   return (
     <div classname='poll'>
-    <div id={questionId}>
-      <div classname='questiontitle'>{questionTitle}</div>
-      <button type="button" name="button1" value={option1Id} onClick={onClick1}>{option1}</button>
-      <button type="button" name="button2" value={option2Id} onClick={onClick2}>{option2}</button>
-    </div> 
+      <div id={questionId}>
+        <div>{questionTitle}</div>
+        <button type="button" name="button1" value={option1Id} onClick={onClick1}>{option1}</button>
+        <button type="button" name="button2" value={option2Id} onClick={onClick2}>{option2}</button>
+      </div> 
     </div>
   )
 }
