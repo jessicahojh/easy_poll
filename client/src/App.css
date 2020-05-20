@@ -50,16 +50,6 @@ label {
   width: 40px;
 }
 
-.custom-class {
-  padding-bottom: 30px;
-}
-
-Nav > Nav.Link {
-  color: white; 
-}
-
-
-
 /* Style the navigation menu */
 .topnav {
   overflow: hidden;
@@ -100,4 +90,8 @@ Nav > Nav.Link {
 .active {
   background-color: black;
   color: white;
+}
+
+.buttons {
+  padding-bottom: 25px;
 }

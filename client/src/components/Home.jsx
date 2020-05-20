@@ -19,11 +19,19 @@ import Tab from 'react-bootstrap/Tab';
 
 import { useSelector } from 'react-redux';
 
+import home from '../static/home.svg';
+import search from '../static/search.svg';
+import add from '../static/add.svg';
+import notification from '../static/notification.svg';
+import profile from '../static/profile.svg';
+
 const Home = () => {
 
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
     const [voteStats, setVoteStats] = useState(null);
+
+    const [bodyComponent, setBodyComponent] = useState(null);
 
     const userId = useSelector((state) => state.users.userId);
 
@@ -93,6 +101,31 @@ const Home = () => {
       
         const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
 
+    function clickHome(e) {
+        e.preventDefault();
+        setBodyComponent("home");
+    }
+
+    function clickSearch(e) {
+        e.preventDefault();
+        setBodyComponent("search");
+    }
+
+    function clickAdd(e) {
+        e.preventDefault();
+        setBodyComponent("add");
+    }
+
+    function clickNotification(e) {
+        e.preventDefault();
+        setBodyComponent("notification");
+    }
+
+    function clickProfile(e) {
+        e.preventDefault();
+        setBodyComponent("profile");
+    }
+
         return (
             <div className='app'>
             <Container>
@@ -107,21 +140,15 @@ const Home = () => {
                     <Bio/>
                 </Row>
 
-                {/* <Row>
-                    <Col></Col>
-                    <Col xs={6}>
-                    <QuestionForm/>
-                    </Col>
-                    <Col></Col>
-                </Row> */}
-
+                <div className="buttons">
                 <Row>
-                    <Button variant="secondary" size="lg" block>
-                        Edit Profile
-                    </Button>
+                    <Col><button type="button"><img src={home} alt="home" className='footer-icon' onClick={clickHome}/></button></Col>
+                    <Col><button type="button"><img src={search} alt="search" className='footer-icon' onClick={clickSearch}/></button></Col>
+                    <Col><button type="button"><img src={add} alt="add" className='footer-icon' onClick={clickAdd}/></button></Col>
+                    <Col><button type="button"><img src={notification} alt="notification" className='footer-icon' onClick={clickNotification}/></button></Col>
+                    <Col><button type="button"><img src={profile} alt="profile" className='footer-icon' onClick={clickProfile}/></button></Col>
                 </Row>
-
-                <div><br></br></div>
+                </div>
 
                 <Tabs defaultActiveKey="Yours" id="uncontrolled-tab-example">
                     <Tab eventKey="Yours" title="Your Created Polls">

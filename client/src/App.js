@@ -8,7 +8,6 @@ import About from './components/About';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Register from './components/auth/Register';
-import Footer from './components/Footer';
 
 import Container from 'react-bootstrap/Container';
 
@@ -26,8 +25,7 @@ const App = () => {
   }, []);
 
   return (
-    // <>
-    // <NavbarC/>
+
       <Router>
         <Fragment>
           <Container>
@@ -39,12 +37,9 @@ const App = () => {
               <Route exact path='/logout' component={Logout}/>
               <Route exact path='/register' component={Register}/>
             </Switch>
-          <Footer/>
           </Container>
         </Fragment>
       </Router>
-
-    // </>
 
   );
 }
