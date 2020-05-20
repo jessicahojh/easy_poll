@@ -56,9 +56,15 @@ const Home = () => {
                     <Col><button type="button"><img src={profile} alt="profile" className='icon' onClick={clickProfile}/></button></Col>
                 </Row>
             </div>
-            
-            <Profile/>
-            
+
+            <div>
+                {bodyComponent === "discover" && <Discover/>}
+                {bodyComponent === "search" && <Search/>}
+                {bodyComponent === "add" && <QuestionForm/>}
+                {bodyComponent === "notification" && <Notifications/>}
+                {bodyComponent === "profile" && <Profile/>}
+            </div>
+                
         </div>
     )
     
