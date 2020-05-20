@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import '../App.css';
 
-const NavbarC = () => {
+const Navbar = () => {
 
   const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
@@ -43,4 +43,4 @@ const NavbarC = () => {
   )
 };
 
-export default NavbarC;
+export default Navbar;
