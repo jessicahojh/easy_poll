@@ -122,3 +122,16 @@ button {
   background-color:rgb(28, 29, 31);
   color: white;
 }
+
+/* Result.jsx */
+.text {
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  background-color: rgb(40, 40, 40);
+}
+
+.result-title{
+  font-weight: bold;
+}

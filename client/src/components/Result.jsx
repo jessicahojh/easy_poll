@@ -1,5 +1,4 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
 
 const Result = ({ question, voteStats }) => {
 
@@ -23,52 +22,17 @@ const Result = ({ question, voteStats }) => {
 
   let total = opt1Votes + opt2Votes;
 
-  let opt1percentage = (opt1Votes/total) * 100;
-  let opt2percentage = (opt2Votes/total) * 100;
-
-  const state = {
-    labels: [option1, option2],
-    datasets: [
-      {
-        label: 'Rainfall',
-        backgroundColor: [
-          '#2FDE00',
-          '#00A6B4',
-          '#6800B4'
-        ],
-        hoverBackgroundColor: [
-        '#175000',
-        '#003350',
-        '#35014F'
-        ],
-        data: [opt1percentage, opt2percentage]
-      }
-    ]
-  }
+  let opt1percentage = Math.round((opt1Votes/total) * 100);
+  let opt2percentage = Math.round((opt2Votes/total) * 100);
 
     return (
-        <div>
-            
-            <Doughnut 
-                data={state}
-                width={"80%"}
-                options={{
-                    title:{
-                    display:true,
-                    text: questionTitle,
-                    fontSize:20
-                    },
-                    legend:{
-                    display:true,
-                    position:'right'
-                    },
-                    rotation: 1 * Math.PI,
-                    circumference: 1 * Math.PI,
-                    maintainAspectRatio: false
-                }}
-            />
-            
+      <div>
+        <div className="text">
+          <div className="result-title">{questionTitle}</div>
+          <div>{option1} <span>{opt1percentage}%</span></div>
+          <div>{option2} <span>{opt2percentage}%</span></div>
         </div>
+      </div>
     )
 }
 
