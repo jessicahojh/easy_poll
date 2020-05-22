@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useSelector } from 'react-redux';
-
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import home from '../static/home.svg';
-import search from '../static/search.svg';
-import add from '../static/add.svg';
-import notification from '../static/notification.svg';
-import profile from '../static/profile.svg';
 
 import Discover from './Discover';
 import Search from './Search';
@@ -21,45 +12,8 @@ const Home = () => {
 
     const bodyComponent = useSelector((state) => state.navbar.page);
 
-    // const [bodyComponent, setBodyComponent] = useState("profile");
-
-    // function clickDiscover(e) {
-    //     e.preventDefault();
-    //     setBodyComponent("discover");
-    // }
-
-    // function clickSearch(e) {
-    //     e.preventDefault();
-    //     setBodyComponent("search");
-    // }
-
-    // function clickAdd(e) {
-    //     e.preventDefault();
-    //     setBodyComponent("add");
-    // }
-
-    // function clickNotification(e) {
-    //     e.preventDefault();
-    //     setBodyComponent("notification");
-    // }
-
-    // function clickProfile(e) {
-    //     e.preventDefault();
-    //     setBodyComponent("profile");
-    // }
-
     return (
         <div className='home'>
-
-            {/* <div className="buttons">
-                <Row>
-                    <Col><button type="button"><img src={home} alt="home" className='icon' onClick={clickDiscover}/></button></Col>
-                    <Col><button type="button"><img src={search} alt="search" className='icon' onClick={clickSearch}/></button></Col>
-                    <Col><button type="button"><img src={add} alt="add" className='icon' onClick={clickAdd}/></button></Col>
-                    <Col><button type="button"><img src={notification} alt="notification" className='icon' onClick={clickNotification}/></button></Col>
-                    <Col><button type="button"><img src={profile} alt="profile" className='icon' onClick={clickProfile}/></button></Col>
-                </Row>
-            </div> */}
 
             <div>
                 {bodyComponent === "discover" && <Discover/>}
