@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useSelector } from 'react-redux';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -17,37 +19,39 @@ import Profile from './Profile';
 
 const Home = () => {
 
-    const [bodyComponent, setBodyComponent] = useState("profile");
+    const bodyComponent = useSelector((state) => state.navbar.page);
 
-    function clickDiscover(e) {
-        e.preventDefault();
-        setBodyComponent("discover");
-    }
+    // const [bodyComponent, setBodyComponent] = useState("profile");
 
-    function clickSearch(e) {
-        e.preventDefault();
-        setBodyComponent("search");
-    }
+    // function clickDiscover(e) {
+    //     e.preventDefault();
+    //     setBodyComponent("discover");
+    // }
 
-    function clickAdd(e) {
-        e.preventDefault();
-        setBodyComponent("add");
-    }
+    // function clickSearch(e) {
+    //     e.preventDefault();
+    //     setBodyComponent("search");
+    // }
 
-    function clickNotification(e) {
-        e.preventDefault();
-        setBodyComponent("notification");
-    }
+    // function clickAdd(e) {
+    //     e.preventDefault();
+    //     setBodyComponent("add");
+    // }
 
-    function clickProfile(e) {
-        e.preventDefault();
-        setBodyComponent("profile");
-    }
+    // function clickNotification(e) {
+    //     e.preventDefault();
+    //     setBodyComponent("notification");
+    // }
+
+    // function clickProfile(e) {
+    //     e.preventDefault();
+    //     setBodyComponent("profile");
+    // }
 
     return (
         <div className='home'>
 
-            <div className="buttons">
+            {/* <div className="buttons">
                 <Row>
                     <Col><button type="button"><img src={home} alt="home" className='icon' onClick={clickDiscover}/></button></Col>
                     <Col><button type="button"><img src={search} alt="search" className='icon' onClick={clickSearch}/></button></Col>
@@ -55,7 +59,7 @@ const Home = () => {
                     <Col><button type="button"><img src={notification} alt="notification" className='icon' onClick={clickNotification}/></button></Col>
                     <Col><button type="button"><img src={profile} alt="profile" className='icon' onClick={clickProfile}/></button></Col>
                 </Row>
-            </div>
+            </div> */}
 
             <div>
                 {bodyComponent === "discover" && <Discover/>}

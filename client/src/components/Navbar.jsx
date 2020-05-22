@@ -1,9 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { changeMainBody } from '../actions/navbarActions';
 
 import '../App.css';
 
+import home from '../static/home.svg';
+import search from '../static/search.svg';
+import add from '../static/add.svg';
+import notification from '../static/notification.svg';
+import profile from '../static/profile.svg';
+
+
 const Navbar = () => {
+
+  const dispatch = useDispatch();
 
   const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
@@ -18,6 +29,31 @@ const Navbar = () => {
     }
   }
 
+    function clickDiscover(e) {
+        e.preventDefault();
+        dispatch(changeMainBody("discover"));
+    }
+
+    function clickSearch(e) {
+        e.preventDefault();
+        dispatch(changeMainBody("search"));
+    }
+
+    function clickAdd(e) {
+        e.preventDefault();
+        dispatch(changeMainBody("add"));
+    }
+
+    function clickNotification(e) {
+        e.preventDefault();
+        dispatch(changeMainBody("notification"));
+    }
+
+    function clickProfile(e) {
+        e.preventDefault();
+        dispatch(changeMainBody("profile"));
+    }
+
   return (
 
     <div>
@@ -25,7 +61,12 @@ const Navbar = () => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
       <div className="topnav">
-        <a href="#home" className="active">InstaPoll</a>
+        <a href="#" className="active">InstaPoll</a>
+        <a href="#"><img src={home} alt="home" className='icon' onClick={clickDiscover}/></a>
+        <a href="#"><img src={search} alt="search" className='icon' onClick={clickSearch}/></a>
+        <a href="#"><img src={add} alt="add" className='icon' onClick={clickAdd}/></a>
+        <a href="#"><img src={notification} alt="notification" className='icon' onClick={clickNotification}/></a>
+        <a href="#"><img src={profile} alt="profile" className='icon' onClick={clickProfile}/></a>
     
         <div id="myLinks">
           <a href="#about">About</a>

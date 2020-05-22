@@ -15,6 +15,8 @@ export const SELECT_OPTION = 'SELECT_OPTION';
 
 export const ADD_VOTE = 'ADD_VOTE';
 
+export const CHANGE_MAIN_BODY = 'CHANGE_MAIN_BODY';
+
 
 
 
