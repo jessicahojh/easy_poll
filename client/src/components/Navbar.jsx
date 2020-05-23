@@ -74,7 +74,7 @@ const Navbar = () => {
           {isAuthenticated ? '' : <a href="/register">Register</a>}
         </div>
 
-        <a href="javascript:void(0);" className="icon" onClick={myFunction}>
+        <a href="javascript:void(0);" className="iconn" onClick={myFunction}>
           <i className="fa fa-bars"></i>
         </a>
       </div>

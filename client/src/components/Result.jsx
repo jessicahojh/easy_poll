@@ -29,8 +29,8 @@ const Result = ({ question, voteStats }) => {
       <div>
         <div className="text">
           <div className="result-title">{questionTitle}</div>
-          <div>{option1} <span>{opt1percentage}%</span></div>
-          <div>{option2} <span>{opt2percentage}%</span></div>
+          <div>{option1}: <span>{opt1percentage}%</span></div>
+          <div>{option2}: <span>{opt2percentage}%</span></div>
         </div>
       </div>
     )
