@@ -1,5 +1,9 @@
 import React from 'react';
 
+import questionMark from '../static/question.svg';
+import check1 from '../static/check1.svg';
+import check2 from '../static/check2.svg';
+
 const Result = ({ question, voteStats }) => {
 
   const questionTitle = question.question;
@@ -28,9 +32,9 @@ const Result = ({ question, voteStats }) => {
     return (
       <div>
         <div className="text">
-          <div className="result-title">{questionTitle}</div>
-          <div>{option1}: <span>{opt1percentage}%</span></div>
-          <div>{option2}: <span>{opt2percentage}%</span></div>
+          <div className="result-title"><img src={questionMark} alt="questionMark" className='icon question-mark'/>{questionTitle}</div>
+            <div className="result-options"><img src={check1} alt="check1" className='icon check'/><b>{option1}</b>: <span>{opt1percentage}%</span></div>
+            <div className="result-options"><img src={check2} alt="check2" className='icon check'/><b>{option2}</b>: <span>{opt2percentage}%</span></div>
         </div>
       </div>
     )

@@ -132,8 +132,25 @@ button {
   border-color: black;
   text-align: center;
   background-color: rgb(40, 40, 40);
+  margin-bottom: 20px;
 }
 
-.result-title{
+.result-title {
   font-weight: bold;
+  text-align: left;
+  margin: 5px;
+}
+
+.result-options {
+  text-align: left;
+}
+
+.question-mark {
+  margin-right: 10px;
+}
+
+.check {
+  margin-right: 10px;
+  margin-left: 40px;
+  margin-bottom: 5px;
 }
