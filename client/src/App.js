@@ -13,6 +13,8 @@ import Container from 'react-bootstrap/Container';
 
 import { autoLogin } from './actions/userActions';
 
+import FileUpload from './components/FileUpload';
+
 import './App.css';
 
 
@@ -29,6 +31,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Container>
+          <FileUpload/>
           <Navbar/>
             <Switch>
               <Route exact path='/' component={Home}/>

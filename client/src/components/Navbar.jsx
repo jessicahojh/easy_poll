@@ -70,6 +70,7 @@ const Navbar = () => {
     
         <div id="myLinks">
           <a href="#about">About</a>
+          <a href="#account">Account</a>
           {isAuthenticated ? <a href="/logout">Logout</a> : <a href="/login">Login</a>}
           {isAuthenticated ? '' : <a href="/register">Register</a>}
         </div>
