@@ -113,15 +113,38 @@ label {
   text-align: center;
 }
 
-/* Poll */
+/* Poll.jsx */
 
 .poll {
   border-style: solid;
+  color:rgb(232, 233, 252);
+  border-width: 1px;
+  border-color: black;
+  text-align: center;
+  background-color: rgb(40, 40, 40);
+  margin-bottom: 20px;
+  padding: 20px
+}
+
+.poll-icon {
+  height: 35px;
+  width: 35px;
 }
 
 button {
   background-color:rgb(28, 29, 31);
   color: white;
+}
+
+.question-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.choice-btn {
+  margin-left: 10px;
+  padding: 10px;
 }
 
 /* Result.jsx */

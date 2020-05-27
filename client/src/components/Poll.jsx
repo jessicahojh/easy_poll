@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVote } from '../actions/voteActions';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import ask from '../static/ask.svg';
+
 const Poll = ({ question }) => {
 
   const [voteStats, setVoteStats] = useState(null);
@@ -47,12 +53,13 @@ const Poll = ({ question }) => {
   }
 
   return (
-    <div classname='poll'>
-      <div id={questionId}>
-        <div>{questionTitle}</div>
-        <button type="button" name="button1" value={option1Id} onClick={onClick1}>{option1}</button>
-        <button type="button" name="button2" value={option2Id} onClick={onClick2}>{option2}</button>
-      </div> 
+    <div>
+      <div id={questionId} className='poll'>
+        <img src={ask} alt="ask" className='poll-icon'/>
+        <div className="question-title">{questionTitle}</div>
+          <button type="button" name="button1" value={option1Id} onClick={onClick1} className="choice-btn">{option1}</button>
+          <button type="button" name="button2" value={option2Id} onClick={onClick2} className="choice-btn">{option2}</button>
+        </div> 
     </div>
   )
 }

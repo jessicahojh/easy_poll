@@ -92,22 +92,26 @@ const YourPolls = () => {
                 
                         <Row>
                             {votedAndNonVoted[0].map((question, index) => 
-                                    <Col xs={4}>
+                                <Col xs={4}>
                                     <Result
                                     question={question}
                                     key={index}
                                     voteStats={voteStats}
                                     />  
-                                    </Col>   
+                                </Col>   
                             )}
                         </Row>
 
-                        {votedAndNonVoted[1].map((question, index) => 
-                                <Poll 
-                                question={question}
-                                key={index}
-                                />      
-                        )}
+                        <Row>
+                            {votedAndNonVoted[1].map((question, index) =>
+                                <Col xs={4}>
+                                    <Poll 
+                                    question={question}
+                                    key={index}
+                                    />   
+                                </Col>    
+                            )}
+                        </Row>
 
             </Container>
                 

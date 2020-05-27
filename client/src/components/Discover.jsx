@@ -6,6 +6,13 @@ const Discover = () => {
 
     <div>
 
+      {/* {votedAndNonVoted[1].map((question, index) => 
+              <Poll 
+              question={question}
+              key={index}
+              />      
+      )} */}
+
     </div>
 
   )
