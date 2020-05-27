@@ -156,6 +156,8 @@ button {
   text-align: center;
   background-color: rgb(40, 40, 40);
   margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .result-title {
@@ -169,11 +171,12 @@ button {
 }
 
 .question-mark {
+  margin-left: 15px;
   margin-right: 10px;
 }
 
 .check {
   margin-right: 10px;
-  margin-left: 40px;
+  margin-left: 60px;
   margin-bottom: 5px;
 }
