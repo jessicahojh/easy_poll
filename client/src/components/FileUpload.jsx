@@ -1,11 +1,17 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { updatePhoto } from '../actions/userActions';
 
 const FileUpload = () => {
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
+
+  const user = useSelector((state) => state.users);
+
+  const dispatch = useDispatch();
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -17,25 +23,23 @@ const FileUpload = () => {
     const formData = new FormData();
     formData.append('file', file);
 
-    try {
-      const res = await axios.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-
-      const { fileName, filePath } = res.data;
-
-      setUploadedFile({ fileName, filePath });
-
-      setMessage('File Uploaded');
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage('There was a problem with the server');
-      } else {
-        setMessage(err.response.data.msg);
+    
+    const res = await axios.post('/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-    }
+    });
+
+    const { fileName, filePath } = res.data;
+
+    setUploadedFile({ fileName, filePath });
+
+    console.log("LOOK HERE FOR FILE", "1", fileName, "2", filePath)
+
+    setMessage('File Uploaded');
+
+    dispatch(updatePhoto(user, filename));
+
   };
 
   return (

@@ -77,6 +77,22 @@ export const logoutUser = () => dispatch => {
   });
 };
 
+// Update user's profile photo
+export const updatePhoto = (user, photo) => {
+  fetch('/users/editphoto', {
+    method: 'POST',
+    body: JSON.stringify([user, photo]),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  // dispatch({
+  //   type: UPDATE_PHOTO
+  // });
+}
+
+
 // Delete the user
 export const deleteUser = user => async dispatch => {
   await fetch('/users/delete', {

@@ -31,6 +31,8 @@ router.post(
 
     const { username, email, password } = req.body;
 
+    const photo = "";
+
     try {
       let user = await User.findOne({ email });
 
@@ -41,7 +43,8 @@ router.post(
       user = new User({
         username,
         email,
-        password
+        password,
+        photo
       });
 
       const salt = await bcrypt.genSalt(10);
@@ -71,6 +74,29 @@ router.post(
       console.error(err.message);
       res.status(500).send('Server Error');
     }
+  }
+);
+
+// @route     POST /users
+// @desc      Edit user's profile photo
+// @access    Public
+router.post(
+  '/editphoto', async (req, res) => {
+
+    console.log("REQ IS", req.body)
+
+    const userId = req.body[0].userId;
+    const newPhoto = req.body[1];
+
+    console.log("console logging", userId, newPhoto)
+
+    const updatePhoto = await User.findOneAndUpdate(
+        { _id: userId },
+        { photo: newPhoto }
+    );
+
+    await updatePhoto.save()
+    .then(res.json('Updated user photo!'))
   }
 );
 

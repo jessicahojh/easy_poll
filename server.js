@@ -19,7 +19,6 @@ app.use('/questions', require('./routes/questions'));
 app.use('/options', require('./routes/options'));
 app.use('/votes', require('./routes/votes'));
 
-
 // Upload Endpoint
 app.post('/upload', (req, res) => {
     if (req.files === null) {
@@ -31,6 +30,7 @@ app.post('/upload', (req, res) => {
     file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
       if (err) {
         console.error(err);
+        console.log("error in server.js upload img")
         return res.status(500).send(err);
       }
   
