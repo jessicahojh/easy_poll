@@ -17,6 +17,8 @@ export const ADD_VOTE = 'ADD_VOTE';
 
 export const CHANGE_MAIN_BODY = 'CHANGE_MAIN_BODY';
 
+export const UPDATE_PHOTO = 'UPDATE_PHOTO';
+
 
 
 

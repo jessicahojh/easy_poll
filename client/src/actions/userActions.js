@@ -7,7 +7,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_USER,
-  DELETE_USER
+  DELETE_USER,
+  UPDATE_PHOTO
 } from './types';
   
 // Register User to server
@@ -78,7 +79,7 @@ export const logoutUser = () => dispatch => {
 };
 
 // Update user's profile photo
-export const updatePhoto = (user, photo) => {
+export const updatePhoto = (user, photo) => async dispatch => {
   fetch('/users/editphoto', {
     method: 'POST',
     body: JSON.stringify([user, photo]),
@@ -87,9 +88,9 @@ export const updatePhoto = (user, photo) => {
     }
   });
 
-  // dispatch({
-  //   type: UPDATE_PHOTO
-  // });
+  dispatch({
+    type: UPDATE_PHOTO
+  });
 }
 
 

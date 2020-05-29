@@ -4,7 +4,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_USER,
-    DELETE_USER
+    DELETE_USER,
+    UPDATE_PHOTO
   } from '../actions/types';
   
   const initialState = {
@@ -46,6 +47,11 @@ import {
           isAuthenticated: false,
           user: null
         };
+
+      case UPDATE_PHOTO:
+        return {
+          ...state
+        }
 
       case DELETE_USER:
         return {
