@@ -11,6 +11,7 @@ import {
   const initialState = {
     user: null,
     userId: null,
+    photo: null,
     isAuthenticated: false
   };
   
@@ -50,7 +51,7 @@ import {
 
       case UPDATE_PHOTO:
         return {
-          ...state
+          photo: action.payload
         }
 
       case DELETE_USER:

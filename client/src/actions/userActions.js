@@ -89,7 +89,8 @@ export const updatePhoto = (user, photo) => async dispatch => {
   });
 
   dispatch({
-    type: UPDATE_PHOTO
+    type: UPDATE_PHOTO,
+    payload: photo
   });
 }
 
