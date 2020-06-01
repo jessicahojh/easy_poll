@@ -23,7 +23,6 @@ const FileUpload = () => {
     const formData = new FormData();
     formData.append('file', file);
 
-    
     const res = await axios.post('/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -33,13 +32,8 @@ const FileUpload = () => {
     const { fileName, filePath } = res.data;
 
     setUploadedFile({ fileName, filePath });
-
-    console.log("LOOK HERE FOR FILE", "1", fileName, "2", filePath)
-
     setMessage('File Uploaded');
-
     dispatch(updatePhoto(user, filename));
-
   };
 
   return (

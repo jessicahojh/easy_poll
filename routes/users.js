@@ -82,13 +82,8 @@ router.post(
 // @access    Public
 router.post(
   '/editphoto', async (req, res) => {
-
-    console.log("REQ IS", req.body)
-
     const userId = req.body[0].userId;
     const newPhoto = req.body[1];
-
-    console.log("console logging", userId, newPhoto)
 
     const updatePhoto = await User.findOneAndUpdate(
         { _id: userId },

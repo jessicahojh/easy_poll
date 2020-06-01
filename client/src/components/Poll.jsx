@@ -29,7 +29,6 @@ const Poll = ({ question }) => {
     fetch(`/votes`)
         .then(response => response.json())
         .then(data => {
-          console.log("fetching in poll component")
             setVoteStats(data);
         });
     }

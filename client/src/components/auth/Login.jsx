@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
-  console.log("isAuth", isAuthenticated)
 
   let history = useHistory();
 

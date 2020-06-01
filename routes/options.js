@@ -31,9 +31,6 @@ router.post('/add', async (req, res) => {
 
     await newOption.save()
     .then(res.json(newOption))
-
-    console.log("LOOK HERE", newOption)
-
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -49,8 +46,6 @@ router.post('/addVote', async (req, res) => {
     const optionId = req.body[0].optionId;
     const voteRes = req.body[1];
     const index = req.body[2];
-
-    console.log("CHECKING", optionId, voteRes, index)
 
     const voteAdd = await Options.findOneAndUpdate(
         { _id: optionId },
