@@ -57,9 +57,9 @@ const Home = () => {
 
             <div>
                 {bodyComponent === "discover" && <Discover
-                                                allQuestionsData={allQuestionsData}
-                                                allVoted={allVoted}
-                                                voteStats={voteStats}/>}
+                                            allQuestionsData={allQuestionsData}
+                                            allVoted={allVoted}
+                                            voteStats={voteStats}/>}
                 {bodyComponent === "search" && <Search/>}
                 {bodyComponent === "add" && <QuestionForm/>}
                 {bodyComponent === "notification" && <Notifications/>}
