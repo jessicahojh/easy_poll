@@ -8,12 +8,11 @@ import About from './components/About';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Register from './components/auth/Register';
+import Account from './components/Account';
 
 import Container from 'react-bootstrap/Container';
 
 import { autoLogin } from './actions/userActions';
-
-import FileUpload from './components/FileUpload';
 
 import './App.css';
 
@@ -31,7 +30,6 @@ const App = () => {
       <Router>
         <Fragment>
           <Container>
-          <FileUpload/>
           <Navbar/>
             <Switch>
               <Route exact path='/' component={Home}/>
@@ -39,6 +37,7 @@ const App = () => {
               <Route exact path='/login' component={Login}/>
               <Route exact path='/logout' component={Logout}/>
               <Route exact path='/register' component={Register}/>
+              <Route exact path='/account' component={Account}/>
             </Switch>
           </Container>
         </Fragment>
