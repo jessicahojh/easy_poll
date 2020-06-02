@@ -1,21 +1,66 @@
 import React from 'react';
 
-const Discover = () => {
+import Poll from './Poll';
 
-  return (
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-    <div>
+const Discover = ({allQuestionsData, allVoted, voteStats}) => {
 
-      {/* {votedAndNonVoted[1].map((question, index) => 
-              <Poll 
-              question={question}
-              key={index}
-              />      
-      )} */}
+    function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
-    </div>
+        const usersVotedQuestionId = [];
 
-  )
+        for (let i = 0; i < allVoted.length; i++) {
+            usersVotedQuestionId.push(allVoted[i].questionId);
+        }
+
+        const votedQuestions = [];
+        const nonVotedQuestions = [];
+
+        for (let i = 0; i < allQuestionsData.length; i++) {
+            if (usersVotedQuestionId.includes(allQuestionsData[i]._id)){
+                votedQuestions.push(allQuestionsData[i]);
+            } else {
+                nonVotedQuestions.push(allQuestionsData[i]);
+            }
+        }
+        return [votedQuestions, nonVotedQuestions];
+    };
+
+    if (allQuestionsData === null || allVoted === null || voteStats === null) {
+        return (
+            <div>
+                <h2> Loading...</h2>
+            </div>
+        )
+
+    } else {
+      
+        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
+
+        return (
+            <div className='app'>
+
+            <Container>
+
+                        <Row>
+                            {votedAndNonVoted[1].map((question, index) =>
+                                <Col xs={4}>
+                                    <Poll 
+                                    question={question}
+                                    key={index}
+                                    />   
+                                </Col>    
+                            )}
+                        </Row>
+
+            </Container>
+                
+            </div>
+        )
+    }
 };
 
 export default Discover;

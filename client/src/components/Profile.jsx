@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Profile = () => {
+const Profile = ({allQuestionsData, allVoted, voteStats}) => {
 
     const [tab, setTab] = useState("yours");
 
@@ -51,7 +51,10 @@ const Profile = () => {
                 </div>
 
                 <div>
-                    {tab === "yours" && <YourPolls/>}
+                    {tab === "yours" && <YourPolls
+                                        allQuestionsData={allQuestionsData}
+                                        allVoted={allVoted}
+                                        voteStats={voteStats}/>}
                     {tab === "others" && <OtherPolls/>}
                 </div>
                     
