@@ -56,18 +56,10 @@ const Home = () => {
         <div className='home'>
 
             <div>
-                {bodyComponent === "discover" && <Discover
-                                            allQuestionsData={allQuestionsData}
-                                            allVoted={allVoted}
-                                            voteStats={voteStats}/>}
-                {bodyComponent === "search" && <Search/>}
-                {bodyComponent === "add" && <QuestionForm/>}
-                {bodyComponent === "notification" && <Notifications/>}
-                {bodyComponent === "profile" && <Profile
-                                                allQuestionsData={allQuestionsData}
-                                                allVoted={allVoted}
-                                                voteStats={voteStats}
-                                                />}
+                <Discover
+                allQuestionsData={allQuestionsData}
+                allVoted={allVoted}
+                voteStats={voteStats}/>
             </div>
                 
         </div>

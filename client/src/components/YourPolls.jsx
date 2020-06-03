@@ -38,6 +38,8 @@ const YourPolls = ({allQuestionsData, allVoted, voteStats}) => {
         )
 
     } else {
+
+        console.log(allVoted, allQuestionsData)
       
         const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
 
