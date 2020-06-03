@@ -17,7 +17,7 @@ const Login = () => {
     const formPassword = document.getElementById('password').value;
 
     dispatch(loginUser({formUsername, formPassword}));
-    history.push('/')
+    history.push('/profile')
   }
 
   return (
