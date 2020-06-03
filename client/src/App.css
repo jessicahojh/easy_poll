@@ -3,6 +3,15 @@
   background-color: rgb(17, 17, 18);
 }
 
+.landing-page {
+  padding-top: 100px;
+  padding-left: 380px;
+}
+
+.register {
+  padding-top: 50px;
+}
+
 /* App.jsx */
 .home {
   background-color: rgb(17, 17, 18);
