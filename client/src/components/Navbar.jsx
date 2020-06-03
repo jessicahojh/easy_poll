@@ -32,8 +32,8 @@ const Navbar = () => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
       <div className="topnav">
-        <a href="/" className="active">InstaPoll</a>
-        <a href="/"><img src={home} alt="home" className='icon'/></a>
+        <a href="/discover" className="active">InstaPoll</a>
+        <a href="/discover"><img src={home} alt="home" className='icon'/></a>
         <a href="/search"><img src={search} alt="search" className='icon'/></a>
         <a href="/add"><img src={add} alt="add" className='icon'/></a>
         <a href="/notifications"><img src={notification} alt="notifications" className='icon'/></a>

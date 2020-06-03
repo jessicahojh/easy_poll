@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import Poll from './Poll';
 
@@ -6,7 +7,51 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Discover = ({allQuestionsData, allVoted, voteStats}) => {
+const Discover = () => {
+
+    ///
+    const [allQuestionsData, setAllQuestionsData] = useState(null);
+    const [allVoted, setAllVoted] = useState(null);
+    const [voteStats, setVoteStats] = useState(null);
+
+    const userId = useSelector((state) => state.users.userId);
+
+    const newQuestion = useSelector((state) => state);
+
+
+    useEffect(() => {
+        Promise.all([
+            fetchAllQuestions(),
+            fetchAllVotes(),
+            fetchVoteStats()
+          ]);
+    }, [userId, newQuestion]);
+
+    function fetchAllQuestions(){
+        fetch(`/questions`)
+            .then(response => response.json())
+            .then(data => {
+                setAllQuestionsData(data);
+            });
+    }
+
+    function fetchAllVotes(){
+        fetch(`/users/getUsersVote/?userId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                setAllVoted(data);
+            });
+    }
+
+    function fetchVoteStats(){
+        fetch(`/votes`)
+            .then(response => response.json())
+            .then(data => {
+                setVoteStats(data);
+            });
+    }
+
+    ///
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
