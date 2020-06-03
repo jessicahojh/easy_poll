@@ -4,8 +4,13 @@
 }
 
 .landing-page {
-  padding-top: 100px;
+  padding-top: 70px;
   padding-left: 380px;
+  color: white;
+}
+
+.login {
+  padding-top: 50px;
 }
 
 .register {
