@@ -11,12 +11,15 @@ const LandingPage = () => {
 
 
     return (
-        <div className="landing-page">
-            <div className="login">
-                <Login/>
-            </div>
-            <div className="register">
-                <Register/>
+        <div>
+            <h1>INSTAPOLL</h1>
+            <div className="landing-page">
+                <div className="login">
+                    <Login/>
+                </div>
+                <div className="register">
+                    <Register/>
+                </div>
             </div>
         </div>
     )
