@@ -22,8 +22,7 @@ const Login = () => {
 
   return (
     <div>
-      {
-        isAuthenticated ? <div> You are logged in </div> :
+      {isAuthenticated ? <div> You are logged in </div> :
         <div className='form-container'>
           <h1>Account Login</h1>
           <form onSubmit={onSubmit}>

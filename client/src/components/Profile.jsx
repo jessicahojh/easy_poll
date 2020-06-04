@@ -20,16 +20,13 @@ const Profile = () => {
     function clickYours(e) {
         e.preventDefault();
         setTab("yours");
-    }
+    };
 
     function clickOthers(e) {
         e.preventDefault();
         setTab("others");
-    }
+    };
 
-
-
-    ///
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
     const [voteStats, setVoteStats] = useState(null);
@@ -37,7 +34,6 @@ const Profile = () => {
     const userId = useSelector((state) => state.users.userId);
 
     const newQuestion = useSelector((state) => state);
-
 
     useEffect(() => {
         Promise.all([
@@ -53,7 +49,7 @@ const Profile = () => {
             .then(data => {
                 setAllQuestionsData(data);
             });
-    }
+    };
 
     function fetchAllVotes(){
         fetch(`/users/getUsersVote/?userId=${userId}`)
@@ -61,7 +57,7 @@ const Profile = () => {
             .then(data => {
                 setAllVoted(data);
             });
-    }
+    };
 
     function fetchVoteStats(){
         fetch(`/votes`)
@@ -69,9 +65,7 @@ const Profile = () => {
             .then(data => {
                 setVoteStats(data);
             });
-    }
-
-    ///
+    };
 
     return (
         <div className='app'>
@@ -110,7 +104,7 @@ const Profile = () => {
         </Container>
             
         </div>
-    )
-}
+    );
+};
 
 export default Profile;

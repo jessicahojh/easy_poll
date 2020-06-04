@@ -2,17 +2,17 @@ import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import Register from './components/auth/Register';
-import About from './components/About';
-import Logout from './components/auth/Logout';
-import Account from './components/Account';
+import Navbar from './components/Navbar';
 import Discover from './components/Discover';
 import Search from './components/Search';
 import QuestionForm from './components/QuestionForm';
 import Notifications from './components/Notifications';
 import Profile from './components/Profile';
+import About from './components/About';
+import Logout from './components/auth/Logout';
+import Account from './components/Account';
 
 import Container from 'react-bootstrap/Container';
 
@@ -37,30 +37,29 @@ const App = () => {
           <Container>
             {isAuthenticated ? 
               <>
-              <Navbar/>
-              <Switch>
-                <Route exact path='/about' component={About}/>
-                <Route exact path='/logout' component={Logout}/>
-                <Route exact path='/account' component={Account}/>
-                <Route exact path='/discover' component={Discover}/>
-                <Route exact path='/search' component={Search}/>
-                <Route exact path='/add' component={QuestionForm}/>
-                <Route exact path='/notification' component={Notifications}/>
-                <Route exact path='/profile' component={Profile}/>
-              </Switch>
+                <Navbar/>
+                <Switch>
+                  <Route exact path='/about' component={About}/>
+                  <Route exact path='/logout' component={Logout}/>
+                  <Route exact path='/account' component={Account}/>
+                  <Route exact path='/discover' component={Discover}/>
+                  <Route exact path='/search' component={Search}/>
+                  <Route exact path='/add' component={QuestionForm}/>
+                  <Route exact path='/notification' component={Notifications}/>
+                  <Route exact path='/profile' component={Profile}/>
+                </Switch>
               </>
             :
               <>
-              <Switch>
-                <Route exact path='/' component={LandingPage}/>
-                <Route exact path='/register' component={Register}/>
-              </Switch>
+                <Switch>
+                  <Route exact path='/' component={LandingPage}/>
+                  <Route exact path='/register' component={Register}/>
+                </Switch>
               </>
             }
           </Container>
         </Fragment>
       </Router>
-
   );
 }
 

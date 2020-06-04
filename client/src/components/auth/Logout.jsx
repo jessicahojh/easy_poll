@@ -1,11 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../actions/userActions';
-
 import { useHistory } from 'react-router-dom';
 
 const Logout = () => {
-  const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
   const dispatch = useDispatch();
   let history = useHistory();

@@ -9,10 +9,7 @@ import add from '../static/add.svg';
 import notification from '../static/notification.svg';
 import profile from '../static/profile.svg';
 
-
 const Navbar = () => {
-
-  const isAuthenticated = useSelector((state) => state.users.isAuthenticated);
 
   function myFunction(e) {
     e.preventDefault();
@@ -49,9 +46,7 @@ const Navbar = () => {
           <i className="fa fa-bars"></i>
         </a>
       </div>
-
     </div>
-
   )
 };
 

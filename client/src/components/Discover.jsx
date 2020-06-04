@@ -9,7 +9,6 @@ import Col from 'react-bootstrap/Col';
 
 const Discover = () => {
 
-    ///
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
     const [voteStats, setVoteStats] = useState(null);
@@ -33,7 +32,7 @@ const Discover = () => {
             .then(data => {
                 setAllQuestionsData(data);
             });
-    }
+    };
 
     function fetchAllVotes(){
         fetch(`/users/getUsersVote/?userId=${userId}`)
@@ -41,7 +40,7 @@ const Discover = () => {
             .then(data => {
                 setAllVoted(data);
             });
-    }
+    };
 
     function fetchVoteStats(){
         fetch(`/votes`)
@@ -49,9 +48,7 @@ const Discover = () => {
             .then(data => {
                 setVoteStats(data);
             });
-    }
-
-    ///
+    };
 
     function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
 
