@@ -11,18 +11,14 @@ const Discover = () => {
 
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
-    const [voteStats, setVoteStats] = useState(null);
 
     const userId = useSelector((state) => state.users.userId);
-
     const newQuestion = useSelector((state) => state);
-
 
     useEffect(() => {
         Promise.all([
             fetchAllQuestions(),
             fetchAllVotes(),
-            fetchVoteStats()
           ]);
     }, [userId, newQuestion]);
 
@@ -39,14 +35,6 @@ const Discover = () => {
             .then(response => response.json())
             .then(data => {
                 setAllVoted(data);
-            });
-    };
-
-    function fetchVoteStats(){
-        fetch(`/votes`)
-            .then(response => response.json())
-            .then(data => {
-                setVoteStats(data);
             });
     };
 
@@ -71,7 +59,7 @@ const Discover = () => {
         return [votedQuestions, nonVotedQuestions];
     };
 
-    if (allQuestionsData === null || allVoted === null || voteStats === null) {
+    if (allQuestionsData === null || allVoted === null) {
         return (
             <div>
                 <h2> Loading...</h2>
@@ -84,9 +72,7 @@ const Discover = () => {
 
         return (
             <div className='app'>
-
             <Container>
-
                         <Row>
                             {votedAndNonVoted[1].map((question, index) =>
                                 <Col xs={4}>
@@ -97,9 +83,7 @@ const Discover = () => {
                                 </Col>    
                             )}
                         </Row>
-
-            </Container>
-                
+            </Container>  
             </div>
         )
     }
