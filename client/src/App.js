@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
+import Register from './components/auth/Register';
 import About from './components/About';
 import Logout from './components/auth/Logout';
 import Account from './components/Account';
@@ -52,6 +53,7 @@ const App = () => {
               <>
               <Switch>
                 <Route exact path='/' component={LandingPage}/>
+                <Route exact path='/register' component={Register}/>
               </Switch>
               </>
             }

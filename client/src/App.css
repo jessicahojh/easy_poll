@@ -4,8 +4,9 @@
 }
 
 .landing-page {
-  padding-top: 70px;
+  padding-top: 50px;
   padding-left: 380px;
+  padding-bottom: 400px;
   color: white;
 }
 
@@ -13,8 +14,14 @@
   padding-top: 50px;
 }
 
+a:visited {
+  color: red;
+  background-color: transparent;
+}
+
 .register {
   padding-top: 50px;
+  padding-bottom: 80px;
 }
 
 /* App.jsx */
