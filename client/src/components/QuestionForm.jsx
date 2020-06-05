@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import { addQuestionAndOptions } from '../actions/questionActions';
+import { useHistory } from 'react-router-dom';
 
 const QuestionForm = () => {
 
@@ -12,6 +13,7 @@ const QuestionForm = () => {
     const [ optionB, setOptionB ] = useState('');
 
     const dispatch = useDispatch();
+    let history = useHistory();
 
     const onSubmit = async (e) => {
       e.preventDefault();
@@ -39,6 +41,8 @@ const QuestionForm = () => {
       setQuestion('');
       setOptionA('');
       setOptionB('');
+
+      history.push('/profile')
       
     };
 
