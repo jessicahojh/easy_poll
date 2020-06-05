@@ -28,6 +28,7 @@ const Profile = () => {
     };
 
     const [allQuestionsData, setAllQuestionsData] = useState(null);
+    const [allQuestionsUserDidCreate, setAllQuestionsUserDidCreate] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
     const [voteStats, setVoteStats] = useState(null);
 
@@ -39,7 +40,8 @@ const Profile = () => {
         Promise.all([
             fetchAllQuestions(),
             fetchAllVotes(),
-            fetchVoteStats()
+            fetchVoteStats(),
+            fetchAllQuestionsUserDidCreate()
           ]);
     }, [userId, newQuestion]);
 
@@ -67,6 +69,14 @@ const Profile = () => {
             });
     };
 
+    function fetchAllQuestionsUserDidCreate(){
+        fetch(`/users/getQuestionsUserDidCreate/?userId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                setAllQuestionsUserDidCreate(data);
+            });
+    }
+
     return (
         <div className='app'>
 
@@ -93,10 +103,13 @@ const Profile = () => {
 
                 <div>
                     {tab === "yours" && <YourPolls
+                                        allQuestionsUserDidCreate={allQuestionsUserDidCreate}
+                                        allVoted={allVoted}
+                                        voteStats={voteStats}/>}
+                    {tab === "others" && <OtherPolls
                                         allQuestionsData={allQuestionsData}
                                         allVoted={allVoted}
                                         voteStats={voteStats}/>}
-                    {tab === "others" && <OtherPolls/>}
                 </div>
                     
             </div>

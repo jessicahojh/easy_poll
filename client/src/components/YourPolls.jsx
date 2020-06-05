@@ -7,9 +7,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const YourPolls = ({allQuestionsData, allVoted, voteStats}) => {
+const YourPolls = ({allQuestionsUserDidCreate, allVoted, voteStats}) => {
 
-    function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
+    function getVotedOrNonVotedQuestions(allVoted, allQuestionsUserDidCreate){
 
         const usersVotedQuestionId = [];
 
@@ -20,17 +20,17 @@ const YourPolls = ({allQuestionsData, allVoted, voteStats}) => {
         const votedQuestions = [];
         const nonVotedQuestions = [];
 
-        for (let i = 0; i < allQuestionsData.length; i++) {
-            if (usersVotedQuestionId.includes(allQuestionsData[i]._id)){
-                votedQuestions.push(allQuestionsData[i]);
+        for (let i = 0; i < allQuestionsUserDidCreate.length; i++) {
+            if (usersVotedQuestionId.includes(allQuestionsUserDidCreate[i]._id)){
+                votedQuestions.push(allQuestionsUserDidCreate[i]);
             } else {
-                nonVotedQuestions.push(allQuestionsData[i]);
+                nonVotedQuestions.push(allQuestionsUserDidCreate[i]);
             }
         }
         return [votedQuestions, nonVotedQuestions];
     };
 
-    if (allQuestionsData === null || allVoted === null || voteStats === null) {
+    if (allQuestionsUserDidCreate === null || allVoted === null || voteStats === null) {
         return (
             <div>
                 <h2> Loading...</h2>
@@ -38,10 +38,8 @@ const YourPolls = ({allQuestionsData, allVoted, voteStats}) => {
         )
 
     } else {
-
-        console.log(allVoted, allQuestionsData)
       
-        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
+        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsUserDidCreate);
 
         return (
             <div className='app'>

@@ -188,4 +188,27 @@ router.get('/getQuestionsUserDidNotCreate',
   }
 );
 
+// @route     GET /users
+// @desc      Get all question id that the user did create
+// @access    Public
+
+router.get('/getQuestionsUserDidCreate',
+  async (req, res) => {
+
+    const id = req.query.userId;
+
+    try {
+      let questionsUserDidCreate = await Questions.find({userId: id});
+
+      if (questionsUserDidCreate) {
+        return res.json(questionsUserDidCreate);
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 module.exports = router;
