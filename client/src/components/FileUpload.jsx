@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { updatePhoto } from '../actions/userActions';
+import { useHistory } from 'react-router-dom';
 
 const FileUpload = () => {
   const [file, setFile] = useState('');
@@ -12,6 +13,7 @@ const FileUpload = () => {
   const user = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -34,6 +36,7 @@ const FileUpload = () => {
     setUploadedFile({ fileName, filePath });
     setMessage('File Uploaded');
     dispatch(updatePhoto(user, filename));
+    history.push('/profile')
   };
 
   return (
