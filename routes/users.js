@@ -7,6 +7,7 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 const Votes = require('../models/Votes');
+const Questions = require('../models/Questions');
 
 // @route     POST /users
 // @desc      Regiter a user
@@ -155,6 +156,29 @@ router.get('/getUsersVote',
 
       if (userVote) {
         return res.json(userVote);
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+// @route     GET /users
+// @desc      Get all question id that the user did not create
+// @access    Public
+
+router.get('/getQuestionsUserDidNotCreate',
+  async (req, res) => {
+
+    const id = req.query.userId;
+
+    try {
+      let questionsUserDidNotCreate = await Questions.find({userId: {$ne : id}});
+
+      if (questionsUserDidNotCreate) {
+        return res.json(questionsUserDidNotCreate);
       }
 
     } catch (err) {

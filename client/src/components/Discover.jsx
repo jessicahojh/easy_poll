@@ -11,6 +11,7 @@ const Discover = () => {
 
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allVoted, setAllVoted] = useState(null);
+    const [allQuestionsUserDidNotCreate, setAllQuestionsUserDidNotCreate] = useState(null);
 
     const userId = useSelector((state) => state.users.userId);
     const newQuestion = useSelector((state) => state);
@@ -19,6 +20,7 @@ const Discover = () => {
         Promise.all([
             fetchAllQuestions(),
             fetchAllVotes(),
+            fetchAllQuestionsUserDidNotCreate()
           ]);
     }, [userId, newQuestion]);
 
@@ -38,7 +40,15 @@ const Discover = () => {
             });
     };
 
-    function getVotedOrNonVotedQuestions(allVoted, allQuestionsData){
+    function fetchAllQuestionsUserDidNotCreate(){
+        fetch(`/users/getQuestionsUserDidNotCreate/?userId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                setAllQuestionsUserDidNotCreate(data);
+            });
+    }
+
+    function getVotedOrNonVotedQuestions(allVoted, allQuestionsUserDidNotCreate){
 
         const usersVotedQuestionId = [];
 
@@ -49,17 +59,17 @@ const Discover = () => {
         const votedQuestions = [];
         const nonVotedQuestions = [];
 
-        for (let i = 0; i < allQuestionsData.length; i++) {
-            if (usersVotedQuestionId.includes(allQuestionsData[i]._id)){
-                votedQuestions.push(allQuestionsData[i]);
+        for (let i = 0; i < allQuestionsUserDidNotCreate.length; i++) {
+            if (usersVotedQuestionId.includes(allQuestionsUserDidNotCreate[i]._id)){
+                votedQuestions.push(allQuestionsUserDidNotCreate[i]);
             } else {
-                nonVotedQuestions.push(allQuestionsData[i]);
+                nonVotedQuestions.push(allQuestionsUserDidNotCreate[i]);
             }
         }
         return [votedQuestions, nonVotedQuestions];
     };
 
-    if (allQuestionsData === null || allVoted === null) {
+    if (allQuestionsUserDidNotCreate === null || allVoted === null) {
         return (
             <div>
                 <h2> Loading...</h2>
@@ -68,7 +78,7 @@ const Discover = () => {
 
     } else {
       
-        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsData);
+        const votedAndNonVoted = getVotedOrNonVotedQuestions(allVoted, allQuestionsUserDidNotCreate);
 
         return (
             <div className='app'>
