@@ -211,4 +211,27 @@ router.get('/getQuestionsUserDidCreate',
   }
 );
 
+// @route     GET /users/getUsername
+// @desc      Get username of the created poll
+// @access    Public
+
+router.get('/getUsername',
+  async (req, res) => {
+
+    const id = req.query.questionUser;
+
+    try {
+      let user = await User.find({_id: id});
+
+      if (user) {
+        return res.json(user[0].username);
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 module.exports = router;

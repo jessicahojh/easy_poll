@@ -11,6 +11,7 @@ import ask from '../static/ask.svg';
 const Poll = ({ question }) => {
 
   const [voteStats, setVoteStats] = useState(null);
+  const [username, setUsername] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -19,20 +20,54 @@ const Poll = ({ question }) => {
   const option1Id = question.options[0]._id;
   const option2 = question.options[1].option;
   const option2Id = question.options[1]._id;
+  const questionUser = question.userId;
   
   const questionId = question._id;
 
   const user = useSelector((state) => state.users);
 
   useEffect(() => {
-    if (voteStats === null){
+    Promise.all([
+        fetchVotes(),
+        fetchUsername()
+      ]);
+  }, [user]);
+
+  function fetchVotes(){
     fetch(`/votes`)
         .then(response => response.json())
         .then(data => {
             setVoteStats(data);
         });
-    }
-  }, [voteStats]);
+  };
+
+  function fetchUsername(){
+    fetch(`/users/getUsername/?questionUser=${questionUser}`)
+        .then(response => response.json())
+        .then(data => {
+            setUsername(data);
+        });
+  };
+
+  // useEffect(() => {
+  //   if (voteStats === null){
+  //   fetch(`/votes`)
+  //       .then(response => response.json())
+  //       .then(data => {
+  //           setVoteStats(data);
+  //       });
+  //   }
+  // }, [voteStats]);
+
+  // useEffect(() => {
+  //   if (username === null){
+  //   fetch(`/users/getUsername/?userId=${questionUser}`)
+  //       .then(response => response.json())
+  //       .then(data => {
+  //           setUsername(data);
+  //       });
+  //   }
+  // }, [username]);
 
 
   function onClick1(e) {
@@ -54,6 +89,7 @@ const Poll = ({ question }) => {
   return (
     <div>
       <div id={questionId} className='poll'>
+        <div>Posted by {username}</div>
         <img src={ask} alt="ask" className='poll-icon'/>
         <div className="question-title">{questionTitle}</div>
           <button type="button" name="button1" value={option1Id} onClick={onClick1} className="choice-btn">{option1}</button>

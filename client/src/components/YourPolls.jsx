@@ -44,8 +44,7 @@ const YourPolls = ({allQuestionsUserDidCreate, allVoted, voteStats}) => {
         return (
             <div className='app'>
 
-            <Container>
-                
+            <Container>     
                         <Row>
                             {votedAndNonVoted[0].map((question, index) => 
                                 <Col xs={4}>
@@ -57,18 +56,6 @@ const YourPolls = ({allQuestionsUserDidCreate, allVoted, voteStats}) => {
                                 </Col>   
                             )}
                         </Row>
-
-                        <Row>
-                            {votedAndNonVoted[1].map((question, index) =>
-                                <Col xs={4}>
-                                    <Poll 
-                                    question={question}
-                                    key={index}
-                                    />   
-                                </Col>    
-                            )}
-                        </Row>
-
             </Container>
                 
             </div>

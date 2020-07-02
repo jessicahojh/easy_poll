@@ -58,17 +58,6 @@ const OtherPolls = ({allQuestionsUserDidNotCreate, allVoted, voteStats}) => {
                         )}
                     </Row>
 
-                    <Row>
-                        {votedAndNonVoted[1].map((question, index) =>
-                            <Col xs={4}>
-                                <Poll 
-                                question={question}
-                                key={index}
-                                />   
-                            </Col>    
-                        )}
-                    </Row>
-
         </Container>
             
         </div>
