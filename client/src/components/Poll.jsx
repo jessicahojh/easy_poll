@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVote } from '../actions/voteActions';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 import ask from '../static/ask.svg';
 
 const Poll = ({ question }) => {
@@ -48,27 +44,6 @@ const Poll = ({ question }) => {
             setUsername(data);
         });
   };
-
-  // useEffect(() => {
-  //   if (voteStats === null){
-  //   fetch(`/votes`)
-  //       .then(response => response.json())
-  //       .then(data => {
-  //           setVoteStats(data);
-  //       });
-  //   }
-  // }, [voteStats]);
-
-  // useEffect(() => {
-  //   if (username === null){
-  //   fetch(`/users/getUsername/?userId=${questionUser}`)
-  //       .then(response => response.json())
-  //       .then(data => {
-  //           setUsername(data);
-  //       });
-  //   }
-  // }, [username]);
-
 
   function onClick1(e) {
     e.preventDefault();
