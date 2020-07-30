@@ -234,4 +234,27 @@ router.get('/getUsername',
   }
 );
 
+// @route     GET /users/getUserInfo
+// @desc      Get user's info'
+// @access    Public
+
+router.get('/getUserInfo',
+  async (req, res) => {
+
+    const id = req.query.userId;
+
+    try {
+      let user = await User.find({_id: id});
+
+      if (user) {
+        return res.json(user[0]);
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 module.exports = router;

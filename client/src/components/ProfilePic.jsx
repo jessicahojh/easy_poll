@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import defaultPic from '../static/defaultPic.jpg';
 
-const ProfilePic = () => {
+const ProfilePic = ({userId}) => {
 
-    const user = useSelector((state) => state.users.user);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        fetchUserInfo()
+    }, [])
+
+    function fetchUserInfo(){
+        fetch(`/users/getUserInfo/?userId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                setUser(data);
+            });
+    }
 
     if (user && user.photo !== "") {
         return (

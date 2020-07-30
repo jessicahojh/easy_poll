@@ -1,31 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import ProfilePic from './ProfilePic';
-import Posts from './Posts';
-import Followers from './Followers';
-import Following from './Following';
-import Bio from './Bio';
-import YourPolls from './YourPolls';
-import OtherPolls from './OtherPolls';
+import ProfilePic from '../ProfilePic';
+import Posts from '../Posts';
+import Followers from '../Followers';
+import Following from '../Following';
+import Bio from '../Bio';
+import UsersCreatedPolls from './UsersCreatedPolls';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Profile = () => {
+const OtherProfiles = () => {
 
-    const [tab, setTab] = useState("yours");
-
-    function clickYours(e) {
-        e.preventDefault();
-        setTab("yours");
-    };
-
-    function clickOthers(e) {
-        e.preventDefault();
-        setTab("others");
-    };
 
     const [allQuestionsData, setAllQuestionsData] = useState(null);
     const [allQuestionsUserDidCreate, setAllQuestionsUserDidCreate] = useState(null);
@@ -90,10 +78,9 @@ const Profile = () => {
     return (
         <div className='app'>
 
-        <Container>
+        {/* <Container>
             <Row>
-                <Col><ProfilePic
-                        userId={userId}/></Col>
+                <Col><ProfilePic/></Col>
                 <Col><Posts/></Col>
                 <Col><Followers/></Col>
                 <Col><Following/></Col>
@@ -125,10 +112,10 @@ const Profile = () => {
                     
             </div>
 
-        </Container>
+        </Container> */}
             
         </div>
     );
 };
 
-export default Profile;
+export default OtherProfiles;

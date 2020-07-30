@@ -64,7 +64,7 @@ const Poll = ({ question }) => {
   return (
     <div>
       <div id={questionId} className='poll'>
-        <div>Posted by <a href={`/${username}`} className="active">{username}</a></div>
+        <div>Posted by <a href={`/${username}/${questionUser}`} className="active">{username}</a></div>
         <img src={ask} alt="ask" className='poll-icon'/>
         <div className="question-title">{questionTitle}</div>
           <button type="button" name="button1" value={option1Id} onClick={onClick1} className="choice-btn">{option1}</button>
