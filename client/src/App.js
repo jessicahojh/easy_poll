@@ -6,6 +6,7 @@ import LandingPage from './components/LandingPage';
 import Register from './components/auth/Register';
 import Navbar from './components/Navbar';
 import Discover from './components/Discover';
+import OtherProfiles from './components/otherUsers/OtherProfiles';
 import Search from './components/Search';
 import QuestionForm from './components/QuestionForm';
 import Notifications from './components/Notifications';
@@ -43,6 +44,7 @@ const App = () => {
                   <Route exact path='/logout' component={Logout}/>
                   <Route exact path='/account' component={Account}/>
                   <Route exact path='/discover' component={Discover}/>
+                  <Route exact path='/:username' component={OtherProfiles}/>
                   <Route exact path='/search' component={Search}/>
                   <Route exact path='/add' component={QuestionForm}/>
                   <Route exact path='/notification' component={Notifications}/>
