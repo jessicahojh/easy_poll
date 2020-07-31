@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVote } from '../actions/voteActions';
 
+import OtherProfiles from './otherUsers/OtherProfiles';
+
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import ask from '../static/ask.svg';
 
 const Poll = ({ question }) => {
@@ -64,7 +68,7 @@ const Poll = ({ question }) => {
   return (
     <div>
       <div id={questionId} className='poll'>
-        <div>Posted by <a href={`/${username}/${questionUser}`} className="active">{username}</a></div>
+        <div>Posted by <a href={`profiles/${username}/${questionUser}`} className="active">{username}</a></div>
         <img src={ask} alt="ask" className='poll-icon'/>
         <div className="question-title">{questionTitle}</div>
           <button type="button" name="button1" value={option1Id} onClick={onClick1} className="choice-btn">{option1}</button>
