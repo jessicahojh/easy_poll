@@ -8,7 +8,7 @@ const ProfilePic = ({userId}) => {
 
     useEffect(() => {
         fetchUserInfo()
-    }, [])
+    }, [user])
 
     function fetchUserInfo(){
         fetch(`/users/getUserInfo/?userId=${userId}`)

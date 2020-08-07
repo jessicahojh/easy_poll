@@ -6,7 +6,7 @@ import Posts from '../Posts';
 import Followers from '../Followers';
 import Following from '../Following';
 import Bio from '../Bio';
-import UsersCreatedPolls from './UsersCreatedPolls';
+// import UsersCreatedPolls from './UsersCreatedPolls';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -15,70 +15,72 @@ import Col from 'react-bootstrap/Col';
 const OtherProfiles = () => {
 
 
-    const [allQuestionsData, setAllQuestionsData] = useState(null);
-    const [allQuestionsUserDidCreate, setAllQuestionsUserDidCreate] = useState(null);
-    const [allQuestionsUserDidNotCreate, setAllQuestionsUserDidNotCreate] = useState(null);
-    const [allVoted, setAllVoted] = useState(null);
-    const [voteStats, setVoteStats] = useState(null);
+    // const [allQuestionsData, setAllQuestionsData] = useState(null);
+    // const [allQuestionsUserDidCreate, setAllQuestionsUserDidCreate] = useState(null);
+    // const [allQuestionsUserDidNotCreate, setAllQuestionsUserDidNotCreate] = useState(null);
+    // const [allVoted, setAllVoted] = useState(null);
+    // const [voteStats, setVoteStats] = useState(null);
 
     const userId = useSelector((state) => state.users.userId);
 
     const newQuestion = useSelector((state) => state);
 
-    useEffect(() => {
-        Promise.all([
-            fetchAllQuestions(),
-            fetchAllVotes(),
-            fetchVoteStats(),
-            fetchAllQuestionsUserDidCreate(),
-            fetchAllQuestionsUserDidNotCreate()
-          ]);
-    }, [userId, newQuestion]);
+    // useEffect(() => {
+    //     Promise.all([
+    //         fetchAllQuestions(),
+    //         fetchAllVotes(),
+    //         fetchVoteStats(),
+    //         fetchAllQuestionsUserDidCreate(),
+    //         fetchAllQuestionsUserDidNotCreate()
+    //       ]);
+    // }, [userId, newQuestion]);
 
-    function fetchAllQuestions(){
-        fetch(`/questions`)
-            .then(response => response.json())
-            .then(data => {
-                setAllQuestionsData(data);
-            });
-    };
+    // function fetchAllQuestions(){
+    //     fetch(`/questions`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setAllQuestionsData(data);
+    //         });
+    // };
 
-    function fetchAllVotes(){
-        fetch(`/users/getUsersVote/?userId=${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                setAllVoted(data);
-            });
-    };
+    // function fetchAllVotes(){
+    //     fetch(`/users/getUsersVote/?userId=${userId}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setAllVoted(data);
+    //         });
+    // };
 
-    function fetchVoteStats(){
-        fetch(`/votes`)
-            .then(response => response.json())
-            .then(data => {
-                setVoteStats(data);
-            });
-    };
+    // function fetchVoteStats(){
+    //     fetch(`/votes`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setVoteStats(data);
+    //         });
+    // };
 
-    function fetchAllQuestionsUserDidCreate(){
-        fetch(`/users/getQuestionsUserDidCreate/?userId=${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                setAllQuestionsUserDidCreate(data);
-            });
-    }
+    // function fetchAllQuestionsUserDidCreate(){
+    //     fetch(`/users/getQuestionsUserDidCreate/?userId=${userId}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setAllQuestionsUserDidCreate(data);
+    //         });
+    // }
 
-    function fetchAllQuestionsUserDidNotCreate(){
-        fetch(`/users/getQuestionsUserDidNotCreate/?userId=${userId}`)
-            .then(response => response.json())
-            .then(data => {
-                setAllQuestionsUserDidNotCreate(data);
-            });
-    }
+    // function fetchAllQuestionsUserDidNotCreate(){
+    //     fetch(`/users/getQuestionsUserDidNotCreate/?userId=${userId}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setAllQuestionsUserDidNotCreate(data);
+    //         });
+    // }
 
     return (
         <div className='app'>
 
-        {/* <Container>
+            {/* <div>hello</div> */}
+
+        <Container>
             <Row>
                 <Col><ProfilePic/></Col>
                 <Col><Posts/></Col>
@@ -88,9 +90,9 @@ const OtherProfiles = () => {
 
             <Row>
                 <Bio/>
-            </Row>
+            </Row> 
 
-            <div>
+            {/* <div>
 
                 <div className="buttons">
                     <Row>
@@ -110,9 +112,9 @@ const OtherProfiles = () => {
                                         voteStats={voteStats}/>}
                 </div>
                     
-            </div>
+            </div> */}
 
-        </Container> */}
+        </Container> 
             
         </div>
     );

@@ -102,6 +102,10 @@ a:visited {
   padding-left: 110px;
 }
 
+.picCol {
+  padding-top: 25px;
+}
+
 /* Pic and Three Boxes */
 .pic {
   height: 130px;

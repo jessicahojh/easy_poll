@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVote } from '../actions/voteActions';
 
-import OtherProfiles from './otherUsers/OtherProfiles';
-
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
 import ask from '../static/ask.svg';
 
 const Poll = ({ question }) => {

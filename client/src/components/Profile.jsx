@@ -92,7 +92,7 @@ const Profile = () => {
 
         <Container>
             <Row>
-                <Col><ProfilePic
+                <Col className="picCol"><ProfilePic
                         userId={userId}/></Col>
                 <Col><Posts/></Col>
                 <Col><Followers/></Col>

@@ -6,6 +6,8 @@ import check2 from '../static/check2.svg';
 
 const Result = ({ question, voteStats }) => {
 
+  console.log("HEY", question, voteStats)
+
   const questionTitle = question.question;
   const option1 = question.options[0].option;
   const option1Id = question.options[0]._id;
